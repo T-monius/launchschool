@@ -1,0 +1,23 @@
+# mortgage_messages.yml
+
+en:
+  welcome: "Welcome to the mortgage calculator!"
+  loan: "Please enter your loan amount: "
+  valid: "Sorry, that doesn't seem to be a valid number."
+  apr_request: "Please enter your APR: "
+  loan_duration: "How many years will you have this loan?"
+  monthly_payment: "Your monthly mortgage payment will be: "
+  payment: '$'
+  repeat: 'Do you want to do another calculation? (y/n)'
+  sign_off: 'Thank you for using this mortgage calculator!'
+es:
+  welcome: "Bienvenidos a la calculadora de hipotecas"
+  loan: "Favor de ingresar el valor de su préstamo: "
+  valid: "Perdone, pero eso no parece ser un número válido."
+  apr_request: "Favor de ingresar la taza de interés: "
+  loan_duration: "¿Cuantos años durará esta hipoteca?"
+  monthly_payment: "La mensualidad será de: "
+  payment: "$"
+  repeat: "¿Quierá usted efectuar otro cálculo? (y/n)"
+  sign_off: "¡Gracias por usar esta calculadora de hipotecas!"
+  
