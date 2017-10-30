@@ -19,4 +19,17 @@
 # If method return value < 20 call method again 
 # Else output interpolated string with age variable
 
-age = rand(200)
+def age_teddy
+  rand(200)
+end
+
+age = age_teddy 
+
+loop do
+  if age < 20
+    age = age_teddy
+  else
+    puts "Teddy is #{age} years old!"
+    break
+  end
+end
