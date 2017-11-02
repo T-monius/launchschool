@@ -122,7 +122,11 @@ loop do
   end
 
   display_results(round)
-
+  if user_victory == 5
+    prompt("You are the GRAND WINNER!")
+  elsif comp_victory == 5
+    prompt("Sorry, the copmuter is the GRAND WINNER!")
+  end
   break if user_victory == 5 || comp_victory == 5
 end
 
