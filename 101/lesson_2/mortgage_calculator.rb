@@ -1,5 +1,5 @@
 =begin
-  Take everything you've learned so far and build a mortgage 
+  Take everything you've learned so far and build a mortgage
   calculator (or car payment calculator -- it's the same thing).
 
   You'll need three pieces of information:
@@ -36,19 +36,20 @@
 # Refactoring:
 # Message prompt method
 # Validate input
-  # loop that asks for numbers while not valid
-  # allow either int or float input (partial yrs or decimal amts)
+# loop that asks for numbers while not valid
+# allow either int or float input (partial yrs or decimal amts)
 # Configuration file
-  # Require yaml
-  # Make MESSAGES
-  # Extract messages to yaml file
-  # Method that calls message file
-  # update prompts to call message method
+# Require yaml
+# Make MESSAGES
+# Extract messages to yaml file
+# Method that calls message file
+# update prompts to call message method
 # Translations
-  # Nest messages file
-  # Set LANGUAGE at top of file
-  # Creat method default language
-LANGUAGE = 'es'
+# Nest messages file
+# Set LANGUAGE at top of file
+# Creat method default language
+
+LANGUAGE = 'en'
 
 require 'yaml'
 MESSAGES = YAML.load_file('mortgage_messages.yml')
@@ -59,21 +60,21 @@ end
 
 def prompt(key)
   message = messages(key, LANGUAGE)
-  (">> #{message}")  
+  ">> #{message}"
 end
 
 def mortgage_calculator(loan_amount, apr, duration)
   monthly_interest = apr / 12
   total_months = duration * 12
-  payment = loan_amount * (monthly_interest / (1 - (1 + 
-  monthly_interest)**(-total_months))) 
+  loan_amount * (monthly_interest / (1 - (1 +
+  monthly_interest)**-total_months))
 end
 
-def valid_int? num
+def valid_int?(num)
   num.to_i.to_s == num && num.to_i.positive?
 end
 
-def valid_float? num
+def valid_float?(num)
   num.to_f.to_s == num && num.to_f.positive?
 end
 
@@ -81,7 +82,7 @@ puts prompt('welcome')
 loop do
   loan_amount = ''
   loop do
-    puts prompt ('loan')
+    puts prompt('loan')
     loan_amount = gets.chomp
 
     if valid_int?(loan_amount) || valid_float?(loan_amount)
@@ -102,7 +103,7 @@ loop do
     apr = gets.chomp
 
     if valid_int?(apr) || valid_float?(apr)
-      apr = apr.to_f/100
+      apr = apr.to_f / 100
       break
     else
       puts prompt('valid')
@@ -127,7 +128,8 @@ loop do
   end
 
   puts prompt('monthly_payment')
-  puts ("#{prompt('payment')}#{mortgage_calculator(loan_amount, apr, duration).round(2)}")
+  puts "#{prompt('payment')}#{mortgage_calculator(loan_amount,
+                                                  apr, duration).round(2)}"
   puts prompt('repeat')
   again = gets.chomp
   break unless again.downcase.start_with?('y')
