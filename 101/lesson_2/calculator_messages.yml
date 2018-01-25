@@ -1,0 +1,29 @@
+# calculator_messages.yml
+
+en:
+  welcome: "Welcome to Calculator! Enter your name:"
+  valid_name: "Make sure to enter a valid name."
+  hi: "Hi"
+  number1: "What's the first number?"
+  not_number: "Hmm... that doesn't look like a valid number"
+  number2: "What's the second number?"
+  numbers: the two numbers...
+  not_command: "Must choose 1, 2 ,3 ,4"
+  zero_division: "Sorry, can't divde by 0."
+  the_result: "The result is "
+  again: "Do you want to perform another calculation (Y again)"
+  goodbye: "Thank you for using the calculator!"
+
+es:
+  welcome: "¡Bienvenido a la calculadora! Ingrese su nombre:"
+  valid_name: "Asegúrese de ingresar un nombre válido"
+  hi: "Hola"
+  number1: "¿Cual es el primer número?"
+  not_number: "Ehh... eso no parece un número válido."
+  number2: "¿Cual es el segundo número?"
+  numbers: "los dos numeros..."
+  not_command: "Usted tiene que escoger o 1 o 2 o 3 o 4."
+  zero_division: "Perdone, pero no se puede dividir por 0."
+  the_result: "El resultado es "
+  again: "Quiere usted efectuar otra calculación (Y para hacer otra)."
+  goodbye: "¡Gracias por usar la calculadora!"
