@@ -1,0 +1,13 @@
+# mad_libs.yml
+
+one:
+  noun: "guy"
+  verb: "move"
+  adjective: "big"
+  adverb: "heavily"
+two:
+  noun: "girl"
+  verb: "hate"
+  adjective: "squirly"
+  adverb: "dumbly"
+

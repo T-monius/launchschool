@@ -1,0 +1,32 @@
+some_improvements
+
+1) We use system "clear" to clear the screen. Suppose we want to change this to some other command in the future - we'd have to change it in multiple places. Create a clear method and call this new method instead of system "clear".
+
+  - We use `system` 'clear' primarily in the `TTTGame'
+    class.
+  - An instance method in the `TTTGame` class would be
+    availaible to all methods in the class
+  - The parameter `clear` is used in the `display_board`
+    method, so must change the parameter so as not to clash with the method `clear`
+
+2) The first time we display a board, we want to suppress the clearing of the screen. This is so we can see the welcome message, or the play again message. However, the method invocation, display_board(false) is incredibly vague. Six months from now, no one will remember what that false stands for without looking at the method implementation. Let's change the method so that we can invoke it like this: display_board(clear_screen: false).
+  - I've never seen the `method(parameter: something)`
+    notation before.
+  - This reminds me of the hash constructor notation for
+    assigning a value to a symbol key.
+
+9) Board class should have all board knowledge
+    - Does that mean that the board should hold the info
+      pertaining to which markers are even available?
+    - Could the comparison of the marker be made if it's
+      the same marker regardless of what other marker may
+      exist? Then, return that marker?
+
+10) Remove the redundancy in the main game loop
+    - Introduce the notion of a 'current player' and
+      alternate
+    - `current_player_moves` method could flip a flag
+      that indicates whose turn it is.
+      + Depending on the current player, call to the
+        appropriate move method.
+      + If true, human turn, and if false computer
