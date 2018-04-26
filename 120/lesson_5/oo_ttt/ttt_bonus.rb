@@ -38,18 +38,18 @@ class Board
     nil
   end
 
-  def user_threat?
-    !!computer_defense
+  def user_threat?(computer_marker, human_marker)
+    !!computer_defense(computer_marker, human_marker)
   end
 
-  def computer_advantage?
-    !!computer_offense
+  def computer_advantage?(computer_marker)
+    !!computer_offense(computer_marker)
   end
 
-  def computer_offense
+  def computer_offense(computer_marker)
     WINNING_LINES.each do |line|
       markers = @squares.values_at(*line).collect(&:marker)
-      if markers.count(TTTGame::COMPUTER_MARKER) == 2
+      if markers.count(computer_marker) == 2
         line.each do |int|
           return int if @squares[int].marker == Square::INITIAL_MARKER
         end
@@ -58,11 +58,11 @@ class Board
     false
   end
 
-  def computer_defense
+  def computer_defense(computer_marker, human_marker)
     WINNING_LINES.each do |line|
       markers = @squares.values_at(*line).collect(&:marker)
-      if markers.count(TTTGame::HUMAN_MARKER) == 2 &&
-         markers.count(TTTGame::COMPUTER_MARKER) == 0
+      if markers.count(human_marker) == 2 &&
+         markers.count(computer_marker) == 0
         line.each do |int|
           return int if @squares[int].marker == Square::INITIAL_MARKER
         end
@@ -127,11 +127,9 @@ class Square
 end
 
 class Player
-  attr_reader :marker
-  attr_accessor :score
+  attr_accessor :score, :marker, :name
 
-  def initialize(marker)
-    @marker = marker
+  def initialize
     self.score = 0
   end
 
@@ -141,26 +139,25 @@ class Player
 end
 
 class TTTGame
-  HUMAN_MARKER = "X"
-  COMPUTER_MARKER = "O"
-  # If I change the this constant to be set by the user, it should no
-  # longer be a constant? Right?
-  FIRST_TO_MOVE = HUMAN_MARKER
+  CHOOSE = 'choose'
+  FIRST_TO_MOVE = CHOOSE
   TOTAL_ROUNDS = 2
 
   attr_reader :board, :human, :computer
 
   def initialize
     @board = Board.new
-    @human = Player.new(HUMAN_MARKER)
-    @computer = Player.new(COMPUTER_MARKER)
+    @human = Player.new
+    @computer = Player.new
     @current_turn = FIRST_TO_MOVE
+    human.marker = choose_player_marker
+    set_computer_marker
+    choose_names
   end
 
   def play
     clear
     display_welcome_message
-
     loop do
       display_board
       play_round
@@ -173,7 +170,6 @@ class TTTGame
       end
       reset
     end
-
     display_goodbye_message
   end
 
@@ -193,18 +189,74 @@ class TTTGame
     display_board
   end
 
+  def choose_player_marker
+    choice = ''
+    loop do
+      puts "Enter 'x' or 'o' to choose your marker: "
+      choice = gets.chomp.downcase
+      break if choice.start_with?('x', 'o')
+    end
+    return 'X' if choice.start_with?('x')
+    'O'
+  end
+
+  def set_computer_marker
+    computer.marker = 'O' if human.marker == 'X'
+    computer.marker = 'X' if human.marker == 'O'
+  end
+
+  def choose?
+    return true if @current_turn == CHOOSE
+    false
+  end
+
+  def valid?(choice)
+    !!choice.start_with?('y', 'n')
+  end
+
+  def choose_player_name
+    puts 'What do you want to be called?'
+    loop do
+      human.name = gets.chomp
+      break if !human.name.empty?
+    end
+  end
+
+  def computer_name
+    computer.name = ['Sonny', 'R2D2', 'Android', 'iRobot'].sample
+  end
+
+  def choose_names
+    choose_player_name
+    computer_name
+  end
+
+  def choose_turn
+    choice = ''
+    loop do
+      puts "Do you want to go first #{human.name}? (y/n)"
+      choice = gets.chomp.downcase
+      break if valid?(choice)
+      puts 'Not a valid entry.'
+    end
+    @current_turn = human.marker if choice.start_with?('y')
+    @current_turn = computer.marker if !choice.start_with?('y')
+  end
+
   def human_turn?
-    @current_turn == HUMAN_MARKER
+    @current_turn == human.marker
   end
 
   def display_board
-    puts "You're a #{human.marker}. Computer is a #{computer.marker}."
+    puts "You're an #{human.marker}. The computer '#{computer.name}'"\
+         " is an #{computer.marker}."
     puts ""
     board.draw
     puts ""
   end
 
   def play_round
+    choose_turn if choose?
     loop do
       current_player_moves
       break if board.someone_won? || board.full?
@@ -226,7 +278,7 @@ class TTTGame
   end
 
   def human_moves
-    puts "Choose a square (#{joinor(board.unmarked_keys)}): "
+    puts "Choose a square #{human.name} (#{joinor(board.unmarked_keys)}): "
     square = nil
     loop do
       square = gets.chomp.to_i
@@ -238,11 +290,14 @@ class TTTGame
   end
 
   def offensive_move
-    board[board.computer_offense] = computer.marker
+    board[board.computer_offense(computer.marker)] = computer.marker
   end
 
   def defensive_move
-    board[board.computer_defense] = computer.marker
+    human_marker = human.marker
+    computer_marker = computer.marker
+    board[board.computer_defense(computer_marker, human_marker)] =
+      computer.marker
   end
 
   def random_move
@@ -250,12 +305,14 @@ class TTTGame
   end
 
   def computer_moves
-    if board.computer_advantage?
+    computer_marker = computer.marker
+    human_marker = human.marker
+    if board.computer_advantage?(computer_marker)
       offensive_move
-    elsif board.user_threat?
+    elsif board.user_threat?(computer_marker, human_marker)
       defensive_move
     elsif board.square_5?
-      board[5] = computer.marker
+      board[5] = computer_marker
     else
       random_move
     end
@@ -264,10 +321,10 @@ class TTTGame
   def current_player_moves
     if human_turn?
       human_moves
-      @current_turn = COMPUTER_MARKER
+      @current_turn = computer.marker
     else
       computer_moves
-      @current_turn = HUMAN_MARKER
+      @current_turn = human.marker
     end
   end
 
@@ -289,9 +346,9 @@ class TTTGame
 
     case board.winning_marker
     when human.marker
-      puts "You won!"
+      puts "You won #{human.name}!"
     when computer.marker
-      puts "Computer won!"
+      puts "#{computer.name} won!"
     else
       puts "It's a tie!"
     end
@@ -326,7 +383,7 @@ class TTTGame
   end
 
   def display_play_again_message
-    puts "Let's play again!"
+    puts "Let's play again #{human.name}!"
     puts ""
     sleep(2)
   end

@@ -1,0 +1,78 @@
+circular_queue_notes.txt
+
+A circular queue is a collection of objects stored in a buffer that is treated as though it is connected end-to-end
+in a circle. When an object is added to this circular queue,
+it is added to the position that immediately follows the
+most recently added object, while removing an object always
+removes the object that has been in the queue the longest.
+
+This works as long as there are empty spots in the buffer.
+If the buffer becomes full, adding a new object to the queue
+requires getting rid of an existing object; with a circular
+queue, the object that has been in the queue the longest is
+discarded and replaced by the new object.
+
+Assuming we have a circular queue with room for 3 objects, the circular queue looks and acts like this:
+
+P1  P2  P3  Comments
+All positions are initially empty
+1     Add 1 to the queue
+1 2   Add 2 to the queue
+2   Remove oldest item from the queue (1)
+2 3 Add 3 to the queue
+4 2 3 Add 4 to the queue, queue is now full
+4   3 Remove oldest item from the queue (2)
+4 5 3 Add 5 to the queue, queue is full again
+4 5 6 Add 6 to the queue, replaces oldest element (3)
+7 5 6 Add 7 to the queue, replaces oldest element (4)
+7   6 Remove oldest item from the queue (5)
+7     Remove oldest item from the queue (6)
+Remove oldest item from the queue (7)
+Remove non-existent item from the queue (nil)
+
+Understanding:
+  - A cicular queue is a buffer with a fixed number of
+    'slots'
+    + Use Fixed Array?
+      > If a standard array is used, then the Array class
+        methods can be called on it which would be inconsstent.
+    + Fixed Hash?
+      > A hash isn't supposed to be ordered as it seems this
+        buffer ought to.
+      > Retrieving elements from the hash may be more easily
+        done as I may be using association to tag the elements.
+    + Custom object elements?
+      > A collaborator object that stores a value in the
+        fixed array could be more effective than an associative array.
+      > When adding a new item, tag the object as 'newest'/
+        'oldest'/'irrelevant' to provide information about it's state.
+      > Querying 'time signature'/'senority' identifies
+        which  element to remove or add next to.
+        - Position is very important
+        - Begin next to the oldest or newest is the only way
+          updating the next oldest/newest
+        - When an item is removed, the adjacent element must
+          be tagged as oldest.
+        - When an item is added, the state of the previous
+          'newest' element must be updated.
+      > States
+        - Value: added when enqueue instance method called
+        - Senority: updated as necessary as items added/
+          removed.
+    + Adding always adds after the newest element
+    + Removing always removes the oldest element
+  - CircularQueue class
+    + Has constructor method that takes one argument
+    + enqueue == add method
+      > Enqueue adds to the buffer
+      > Also, calls a method to update the state of the
+        previous 'newest' element.
+    + dequeue == remove method
+      > Removes object from the buffer
+      > Invokes a method to update the state of the new
+        'oldest' object.
+    + Instance variable fo maintain state of oldest element?
+      > Tag the oldest element and pass the boton when a new
+        element is added?
+      > Rotate the array?
+    + Instance variable to maintain state of newest element?

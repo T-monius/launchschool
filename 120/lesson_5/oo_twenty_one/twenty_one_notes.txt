@@ -1,0 +1,65 @@
+Game
+  - The game could call the participants hand setter method to update
+    the players cards
+  - Currently, I pass the player's hand to the dealer to mutate it
+  - Total
+    + Total can be an instance variable
+    + If I made a hand an object like `deck`, then, the hand could
+      query itself.
+  - Turns
+    + The player's turn requires querying the player for what they want
+      to do after seeing their cards.
+    + Presumably, a value can already be established since both players
+      have their cards after the deal.
+    + After completing the turn portion of the game method, my turns are
+      doing three things
+      = They query the player
+      = Udpade the players values
+      = Output the new card values
+    + If I get back into creating logic that has the query method query
+      the player, I can have the `action` instance variable set based on
+      the result of the players' choice.
+    + Then, the dealer simply reacts to the action chosen by the player.
+    + The turn method could be the same for both players
+      = Simply call the dealer to act on the players action.
+
+Participant
+  - Hit & Stay
+    + When it comes to these two variables, I need to indicate to the
+      dealer what my choice is.
+    + Since only the dealer has access to the deck, the dealer must
+      analyze the 'action' each player intends to take.
+    + 'Action' will be an instance variable of each participant
+  - Busted?
+  - Total
+
+Player
+
+Dealer
+  - It seems obvious that the dealer has the capacity to deal
+  - He also presumably holds the deck
+    + Deck may be a collaborator object of the dealer
+    + The Dealer deals from the deck w/ `deal` being a dealer instance
+      method
+  - The dealer has a 'deal' instance method
+    + The method is very simple and thus flexible enough to be used by
+      several other dealer methods.
+    + The game will ask the dealer to deal out 2 cards to begin the game
+      which is it's own unique action.
+    + The dealer will have separate methods for dealing to the other
+      participants or himself.
+      = To deal to himself, the dealer can query it's own action
+        instance variable
+      = To deal to the player, the game will give the dealer access to
+        the dealer's action instance variable by having the 'deal to
+        player' instance method take a parameter.
+Deck
+  - Seems natural for the deck to be a data structure holding 52 card
+    objects
+  - Suits constant
+  - Card values constant
+  - `initialize`
+    + Set deck instance variable to call `initialize deck`
+
+Card
+  - The card is a data structure with a face and a value
