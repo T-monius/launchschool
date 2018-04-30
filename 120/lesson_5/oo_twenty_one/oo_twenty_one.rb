@@ -4,8 +4,6 @@ class Player
   attr_accessor :hand, :card_total
 
   def initialize
-    # what would the "data" or "states" of a Player object entail?
-    # maybe cards? a name?
     self.hand = []
   end
 
@@ -55,9 +53,9 @@ class Dealer < Player
     self.deck = Deck.new
   end
 
-  def deal
+  def deal(hand:)
     card = @deck.cards.sample
-    @deck.cards.delete(card)
+    hand << @deck.cards.delete(card)
   end
 
   def deal_to_self
@@ -132,8 +130,8 @@ class Game
   end
 
   def initial_deal
-    2.times { dealer.deal_to_self }
-    2.times { dealer.deal_to_player(player.hand) }
+    2.times { dealer.deal(hand: dealer.hand) }
+    2.times { dealer.deal(hand: player.hand) }
   end
 
   def total_participant_cards
@@ -141,19 +139,28 @@ class Game
     dealer.total
   end
 
-  def show_cards
-    clear
+  def show_dealer_cards
     prompt("The dealer's hand is: ")
     puts dealer.hand[0..1]
     puts dealer.card_total
-    puts '-------------------------'
+  end
+
+  def show_player_cards
     prompt("The player's hand is: ")
     puts player.hand
     puts player.card_total
+    puts '-------------------------'
+  end
+
+  def show_cards
+    clear
+    show_dealer_cards
+    puts '-------------------------'
+    show_player_cards
   end
 
   def clear
-    system 'clear'
+    system 'cls'
   end
 
   def query_player
@@ -172,9 +179,10 @@ class Game
     loop do
       action = query_player
       break if action == 'stay'
-      dealer.deal_to_player(player.hand)
+      dealer.deal(hand: player.hand)
       total_participant_cards
-      show_cards
+      show_player_cards
+      break if player.busted?
     end
   end
 
@@ -182,7 +190,7 @@ class Game
     return nil if player.busted?
     loop do
       break if dealer.card_total >= 17
-      dealer.deal_to_self
+      dealer.deal(hand: dealer.hand)
       total_participant_cards
       show_cards
     end
