@@ -1,0 +1,49 @@
+# stack_machine_notes.txt
+
+Understanding
+  - Minilang Class
+    + Every time a new object is instantiated, it's
+      constructor method takes a string argument that
+      dictates which of the program commands will be
+      executed.
+    + Constructor Method
+      > Takes a string argument
+      > String parsed
+        - Split into commands array?
+    + #eval
+      + Invoking on an instance of the class should 'run' the
+        program
+      + Can define to iterate over the `program` instance
+        variable and execute the commands with #send.
+  - Stack = list of values
+    + Grows and shrinks dynamically
+    + Usually Array w/ #push and #pop
+  - Register = current value
+    + Each operation uses
+    + Separate from stack
+  - Two value operations
+    + Pop top value from stack
+    + Operate against register value
+    + Register becomes result of operation
+    + Stack size reduced
+  - Implement for each operation
+    + Operations can be instance methods in the Stack class
+    + 
+  - Rescue
+    + The description mentioned needing to use rescues
+    + Rescues when trying to operate on an empty register.
+    + Rescue unknown tokens
+    + Stop processing when error thrown.
+
+Nouns and Verbs
+  Nouns: stack, register, program/commands
+  Verbs: operations
+
+Classes
+  Minilang machine
+  States
+    stack
+      Array
+    register
+      Intager
+  Operations

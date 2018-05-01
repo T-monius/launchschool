@@ -55,6 +55,7 @@ Understanding:
           be tagged as oldest.
         - When an item is added, the state of the previous
           'newest' element must be updated.
+        - ** Use a time from the Time class as reference!!
       > States
         - Value: added when enqueue instance method called
         - Senority: updated as necessary as items added/
