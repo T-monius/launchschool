@@ -1,0 +1,50 @@
+# number_guesser1.txt
+
+Game Description
+  - Play game
+  - Set a random number between 1 and 100
+  - Ask player for a number between 1 and 100
+    + If the number is not valid beacuse it's too high or too
+      low say so
+  - Compare player's number to random number
+    + If the numbers are the same, the player wins
+    + If the numbers are different, ask the player for another
+      number.
+  - Repeat 7 times if the player doesn't win
+
+Extract Nouns and Verbs
+  - Nouns
+    + 1, 100, random number, player number, win
+  - Verbs
+    + play, ask, validate, say, compare, repeat
+
+Associate Nounse and Verbs
+  - States
+    + 1, 100 are a range: Constant
+    + Instance variables: random number, player number, win,
+      guesses
+  - Methods
+    + Instnace methods: play, ask, valid?, say, compare,
+      repeat
+
+Understanding
+  - GuessingGame is a class
+  - `play` instance method is the 'game engine'
+  - Range 1..100
+    + Constant?
+  - Since the number sought after is unknown and random, the
+    class must assign it at random.
+    + Instance variable assigned in constructor
+    + Range does not have a #sample method
+    + Convert to Array to sample
+  - `play`
+    + Prompt for user input
+      > `query_player`
+        - Loop and continually ask the player for a number
+          until the number is valid
+    + Validate user input
+      > In range
+    + Iterate 7 times
+      > Out of guesses if goes to 8th and not identified num
+        - Output out of guesses message
+      > Break and output victory message if identified number

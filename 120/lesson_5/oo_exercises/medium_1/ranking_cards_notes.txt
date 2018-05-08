@@ -1,0 +1,22 @@
+# ranking_cards_notes.txt
+
+# For this exercise, numeric cards are low cards, ordered from 2
+# through 10. Jacks are higher than 10s, Queens are higher than Jacks,
+# Kings are higher than Queens, and Aces are higher than Kings. The
+# suit plays no part in the relative ranking of cards.
+
+# If you have two or more cards of the same rank in your list, your min
+# and max methods should return one of the matching cards; it doesn't
+# matter which one.
+
+# Besides any methods needed to determine the lowest and highest cards,
+# create a #to_s method that returns a String representation of the
+# card, e.g., "Jack of Diamonds", "4 of Clubs", etc.
+
+# Understanding:
+# The Card class must be able to compare itself in order to be ordered
+# Can include comparable
+#   - Only have to define <=> in that case
+# Royals
+#   - Give the royals an integer value from inception?
+#   - Use value hash

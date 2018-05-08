@@ -1,0 +1,35 @@
+# poker_notes.txt
+
+Understanding:
+  > Each instance of the PokerHand class is initialized with 5 cards as
+    an input which the skeleton code names 'deck' in the constructor definition parameter
+    - In the LS tests, the a new PokerHand object is instantiated with
+      a new deck object in the constructor.
+    - Ah, I understand the 'Monkey Patching' now; the constructor
+      normally uses the Deck#draw method to draw five cards. The patch
+      allows the PokerHand class to #draw/#pop from the input array instead.
+  > The Constructor taking a deck object gives the PokerHand class
+    access to the Deck Class' attributes.
+    - When evaluating hands, I have access to the Deck Class constants.
+  > The evaluate instance method calls helper methods to determine if a
+    particular hand qualifies for a determined desination.
+  > Straight?
+    - I'm working with an array of values.
+    - Values are all we need to see if there is a straight.
+    - A straight is any set of 5 sequential values.
+    - If I sort the values array, they should all be in order.
+      + Iterating over the sorted array, I can return true if the
+        current value is always 1 greater than the previous.
+      + Return false if while iterating, the current value is ever not
+        one greater than the previous.
+    - Algorithm
+      + Set flag to true
+      + Set start_value to index[0]
+      + Iterate using each with index
+      + Set to false if array value not == to start_value plus index
+  > two_pair?
+    - pair? method evaluates the hand to see if there is a pair
+    - How do I use #pair? to evaluate twice?
+      + Exclude the original pair and see if there is another?
+      + Instead of using a flag, use a counter that returns true if 2
+

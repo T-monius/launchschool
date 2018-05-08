@@ -1,0 +1,41 @@
+# number_guesser2_notes.txt
+
+# Understanding:
+# Constructor takes two arguments to define the range.
+# Number of Guesses is determined by the algorithm.
+#   - Since both of the criteria are dynamic, they can't be constants.
+
+You have 10 guesses remaining.
+Enter a number between 501 and 1500: 104
+Invalid guess. Enter a number between 501 and 1500: 1000
+Your guess is too low
+
+You have 9 guesses remaining.
+Enter a number between 501 and 1500: 1250
+Your guess is too low
+
+You have 8 guesses remaining.
+Enter a number between 501 and 1500: 1375
+Your guess is too high
+
+You have 7 guesses remaining.
+Enter a number between 501 and 1500: 80
+Invalid guess. Enter a number between 501 and 1500: 1312
+Your guess is too low
+
+You have 6 guesses remaining.
+Enter a number between 501 and 1500: 1343
+Your guess is too low
+
+You have 5 guesses remaining.
+Enter a number between 501 and 1500: 1359
+Your guess is too high
+
+You have 4 guesses remaining.
+Enter a number between 501 and 1500: 1351
+Your guess is too high
+
+You have 3 guesses remaining.
+Enter a number between 501 and 1500: 1355
+You win!
+
