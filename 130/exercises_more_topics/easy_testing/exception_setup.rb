@@ -11,7 +11,7 @@ class Employee
   end
 
   def hire
-    raise(NoExperieceError) unless experience > 0
+    raise(NoExperienceError) unless experience > 0
     "#{name} is hired."
   end
 end
