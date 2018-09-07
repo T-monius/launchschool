@@ -1,5 +1,13 @@
 # sieve.rb
 
+# This class builds an assosiative array where the first element
+# of inner arrays is a number, and the second an empty string
+# or a mark. The associative array is called numbers and based
+# on a limit which is passed in when an object of the class is
+# instantiated. The numbers list starts at 2 and goes up to
+# the limit inclusive. The numbers are then marked if they are
+# composite or left as unmarked in the list if they are not.
+# The unmarked numbers are stored in an array called primes.
 class Sieve
   attr_reader :limit, :numbers, :primes
 
@@ -32,11 +40,11 @@ class Sieve
   end
 
   def find_next_prime(current_prime)
-    modified_list = numbers.select do |num, mark|
+    next_prime = numbers.find do |num, mark|
       num > current_prime && mark == ''
     end
-    return false if modified_list.empty?
-    modified_list.first.first
+    return false if !next_prime
+    next_prime.first
   end
 
   def find_primes
@@ -44,3 +52,5 @@ class Sieve
     prime_list.map(&:first)
   end
 end
+
+p Sieve.new(10).primes

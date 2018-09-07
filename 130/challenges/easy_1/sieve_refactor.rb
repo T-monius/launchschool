@@ -40,11 +40,11 @@ class Sieve
   end
 
   def find_next_prime(current_prime)
-    modified_list = numbers.select do |num, mark|
+    next_prime = numbers.find do |num, mark|
       num > current_prime && mark == ''
     end
-    return false if modified_list.empty?
-    modified_list.first.first
+    return false if !next_prime
+    next_prime.first
   end
 
   def find_primes
@@ -52,3 +52,5 @@ class Sieve
     prime_list.map(&:first)
   end
 end
+
+p Sieve.new(10).primes
