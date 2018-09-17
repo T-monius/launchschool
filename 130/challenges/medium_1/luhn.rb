@@ -48,6 +48,3 @@ class Luhn
     self.id_num = Luhn.reverse_digits_to_int(id_digits)
   end
 end
-
-p Luhn.create(123)
-p Luhn.create(873_956)
