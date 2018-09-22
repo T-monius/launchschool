@@ -37,7 +37,7 @@
 #         = Append to end
 #         = Append 'ay'
 #       + 3 letter swap
-#       + First three 'thr' or 'sch' or Constant followd by 'qu'
+#       + First 3 'thr' or 'sch' or Consonant followd by 'qu'
 #         = Drop first three letters
 #         = Append to end
 #         = Append 'ay'
