@@ -1,8 +1,4 @@
 # circular_buffer.rb
-require 'pry'
-
-class BufferEmptyException < StandardError; end
-class BufferFullException < StandardError; end
 
 class BufferObject
   attr_accessor :stamp, :time_stamp
@@ -22,6 +18,9 @@ class BufferObject
 end
 
 class CircularBuffer
+  class BufferEmptyException < StandardError; end
+  class BufferFullException < StandardError; end
+
   attr_accessor :buffer, :buffer_length, :add_at_index
 
   def initialize(buffer_length)
