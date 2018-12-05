@@ -5,7 +5,7 @@ class House
 
   def build_verse(num)
     idx = -1
-    pieces_array = pieces
+
     verse = []
 
     loop do
@@ -30,11 +30,6 @@ class House
 
     poem_size.times { |idx| poem << build_verse(idx + 1) }
     poem.join("\n\n")
-  end
-
-  def self.recite
-    house = House.new
-    house.build_poem
   end
 
   def self.recite
