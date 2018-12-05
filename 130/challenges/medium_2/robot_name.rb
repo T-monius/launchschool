@@ -2,18 +2,18 @@
 
 class Robot
   attr_accessor :name
-  @@historic_names = []
+  @historic_names = []
 
   def initialize
-    self.name = procuce_valid_name
+    self.name = produce_valid_name
   end
 
   def reset
     self.name = produce_valid_name
   end
 
-  def self.log
-    @@historic_names
+  def self.historic_names
+    @historic_names
   end
 
   private
@@ -35,12 +35,12 @@ class Robot
   end
 
   def valid?(name)
-    !@@historic_names.include?(name)
+    !Robot.historic_names.include?(name)
   end
 
   def produce_valid_name
     new_name = valid_name
-    @@historic_names << new_name
+    Robot.historic_names << new_name
     new_name
   end
 end
