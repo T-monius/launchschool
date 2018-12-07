@@ -1,0 +1,26 @@
+# after_midnight_notes.txt
+
+Understanding:
+  - Time of day
+    + minutes before or after midnight
+    + Positive number, after midnight
+    + Negative number, before midnight
+    + 1440 minutes in a day
+  - Method
+    + Input
+      > Integer
+      > Minutes
+    + Task
+      > Factor out minutes and hours for a single day
+    + Output
+      > String
+      > 24 hour format
+      > Interpolate minutes and hours
+  - Cannot use `Date` and `Time` classes
+
+Approach
+  - Find the minutes of a given day
+    + Modulus off minutes in a day from the input
+    + Divide the number by minutes in an hour
+      > Get the result
+      > Get the remainder

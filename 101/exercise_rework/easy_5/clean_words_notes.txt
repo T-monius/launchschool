@@ -1,0 +1,15 @@
+# clean_words_notes.txt
+
+Understanding:
+  - Input
+    + String
+    + Alphas and non-alphas
+  - Task
+    + Identify non-alphas
+    + Replace any group of non-alphas with a single space
+  - Output
+    + String with no non-alphas
+    + Single space indicating where change was made
+
+Approach:
+  - "String::tr_s"

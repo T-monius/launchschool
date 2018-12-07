@@ -1,0 +1,26 @@
+# letter_counter_notes.txt
+
+Understanding
+  -Input
+    + String
+    + Words, space separated
+  - Task
+    + Provide a count for word lengths represented in the
+      sentence
+  - Output
+    + Hash
+    + keys = integer
+      > Represents a word of that many characters
+    + value = integer
+      > Represents the number of words in the string for the
+        corresponding key
+      > count
+
+Approach
+  - Instantiate a hash with zero as a default
+  - Split the input
+  - Iterating over the input array
+    + Access the hash and provide the count of the word at
+      iteration as the key
+    + Increment the value
+  - Return the hash
