@@ -1,0 +1,13 @@
+# letter_counter2_notes.txt
+
+Understanding
+  - Count letters in a word
+    + Access a hash with the count as the key
+    + Add to the value of the count by one.
+    + Exclude non-letters
+  - `word_sizes`
+    + Already provides a hash with counts
+    + Does not alot for non-alphas
+    + Can clean the word for alphas only
+    + `String#count` takes arguments that indicate ranges to
+      to count
