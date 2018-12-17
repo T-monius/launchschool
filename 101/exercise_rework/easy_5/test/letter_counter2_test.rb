@@ -3,7 +3,7 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use!
-require_relative 'letter_counter2'
+require_relative '../letter_counter2'
 
 class LetterCounter2Test < Minitest::Test
   def test_four_words_one_punctuation

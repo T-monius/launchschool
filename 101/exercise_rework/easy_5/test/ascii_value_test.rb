@@ -1,7 +1,7 @@
 # ascii_value_test.rb
 
 require 'minitest/autorun'
-require_relative 'ascii_value'
+require_relative '../ascii_value'
 
 class AsciiValue < Minitest::Test
   def test_four_score

@@ -3,7 +3,7 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use!
-require_relative 'bannerizer'
+require_relative '../bannerizer'
 
 BOX_WITH_CONTENTS  = <<BOX
 "+--------------------------------------------+"

@@ -3,7 +3,7 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use!
-require_relative 'letter_swap'
+require_relative '../letter_swap'
 
 class SwapTest < Minitest::Test
   def test_abcde

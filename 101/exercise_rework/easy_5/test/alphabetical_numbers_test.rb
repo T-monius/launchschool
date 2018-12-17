@@ -3,7 +3,7 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use!
-require_relative 'alphabetical_numbers'
+require_relative '../alphabetical_numbers'
 
 class AlphabeticalNumbersTest < Minitest::Test
   def test_array_of_integers

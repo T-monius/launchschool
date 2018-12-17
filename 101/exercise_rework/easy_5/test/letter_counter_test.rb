@@ -2,7 +2,7 @@
 
 require 'minitest/autorun'
 require 'minitest/reporters'
-require_relative 'letter_counter'
+require_relative '../letter_counter'
 Minitest::Reporters.use!
 
 class LetterCounterTest < Minitest::Test

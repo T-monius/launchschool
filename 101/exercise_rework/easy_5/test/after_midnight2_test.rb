@@ -1,7 +1,7 @@
 # after_midnight2_test.rb
 
 require 'minitest/autorun'
-require_relative 'after_midnight2'
+require_relative '../after_midnight2'
 require 'minitest/reporters'
 Minitest::Reporters.use!
 

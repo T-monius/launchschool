@@ -4,7 +4,7 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 Minitest::Reporters.use!
 
-require_relative 'daily_double'
+require_relative '../daily_double'
 
 class DailyDoubleTest < Minitest::Test
   def test_two_words_with_duplicate_characters
