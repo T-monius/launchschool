@@ -1,18 +1,3 @@
 # ascii_value_notes.txt
 
-Understanding
-  - Method
-  - Input
-    + String
-  - Task
-    + Determine value of string
-    + Each character associated with ascii value
-    + Combine individual values
-  - Output
-    + Integer
 
-Approach
-  - Get individual characters of the string (array)
-  - Reduce the array (`Array#sum` also works)
-    + Call `#ord` on each character
-    + Add the returned value to the memo

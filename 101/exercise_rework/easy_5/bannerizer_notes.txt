@@ -1,0 +1,27 @@
+# bannerizer_notes.txt
+
+Understanding
+  - Method
+  - Input 
+    + String
+  - Task
+    + Determine string length
+    + Determine surrounding characters for the box at a given
+      position
+  - Output
+    + Print the input string to the stdout inside of a box
+    + Box is two lines taller on either side than the  string
+    + Box is two characters wide on each side than the string
+    + First line is '+-' followed by string length '-'s then
+      '-+'
+    + Second line is the '| ' followed by string legth ' 's
+      then ' |'
+    + Third line is the same as the second line but has the
+      string as contents instead of spaces
+
+Implementation
+  - Set a variable to the length of the string
+  - Make a helper to return the outer limits of the box
+    > '+-' plus '-' * length plus '-+'
+  - Helper for inner contents
+    > '| ' plus ' ' * length or string plu ' |'
