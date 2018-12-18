@@ -1,0 +1,22 @@
+# delete_vowels_notes.txt
+
+Understanding
+  - Input
+    + Array
+      > String elements
+  - Task
+    + Transformation
+    + Remove vowels from inner strings
+  - Output
+    + Array
+    + string values
+
+Implementation
+  + Map
+    > `String#delete` returns the deleted portion
+      - I was mistaken. This method returns the string without
+        the deleted characters ((
+    > What `String` method would return the matching portion?
+    > `String#match` would return the first match
+    > `String#scan` would return an array of all of the
+      matches that could then be joined

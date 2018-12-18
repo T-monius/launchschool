@@ -1,0 +1,26 @@
+# fib_number_location_notes.txt
+
+Understanding
+  - Input
+    + Integer
+    + Represents the length of the target element in the
+      Fibonacci series
+    + The first two numbers in the Fibonacci series are 1
+      > Subsequent numbers are the sum of the previous two
+      > Can seed a Fibonacci number generator with [1,1] or
+        somehow indicate that the first two index values are
+        1.
+  - Task
+    + Find the index of the first number that has the same
+      length as the integer input value
+  - Output
+    + Integer
+
+Implementation
+  - Generate the fibonacci series until the length of the
+    number at iteration/recursion is equal to the input value
+    > Recursion
+      + Return index if length of the current integer is equal
+        to the first input argument
+    > Carry an index counter
+    > Set previous two numbers
