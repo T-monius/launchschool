@@ -1,0 +1,19 @@
+# reversed_array_notes.txt
+
+Understanding
+  - Input
+    + Array
+  - Task
+    + Mutate the array elements
+  - Output
+    + Same array as the input
+
+Implementation
+  - Iterate over the list
+    + Shift each element into a temporary array
+  - Iterate again
+    + Unshift the elements from the temporary array into the
+      old
+  - Alternatively
+    + Shift the first element
+    + Push it to the end at the same iteration

@@ -15,12 +15,11 @@ Understanding
       length as the integer input value
   - Output
     + Integer
+      > Index of the match
 
 Implementation
   - Generate the fibonacci series until the length of the
     number at iteration/recursion is equal to the input value
-    > Recursion
-      + Return index if length of the current integer is equal
-        to the first input argument
+    > Iterate
     > Carry an index counter
     > Set previous two numbers
