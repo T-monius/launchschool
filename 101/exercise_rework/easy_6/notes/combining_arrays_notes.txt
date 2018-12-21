@@ -1,0 +1,14 @@
+# combining_arrays_notes.txt
+
+Understanding
+  - Input
+    + Two arrays
+  - Task
+    + Combine the two input arrays
+    + Only include unique elements in the new array
+  - Output
+    + New Array
+    + Unique values from the two input arrays
+
+Implementation
+  - Set union (|) does this
