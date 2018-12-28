@@ -1,0 +1,29 @@
+Understanding
+  - Input
+    + An array
+  - Task
+    + Find half of the first array
+    + Divide the Array into two smaller arrays of half the
+      length
+  - Output
+    + Nested array with two inner arrays
+      > Inner arrays are half of the input array
+      > An odd length input array results in the first inner
+        array being longer.
+
+Implementation
+  - Find the length of the input array
+  - Get half of the length
+  - If the array length is odd, then the first new array starts
+    from 0 to half
+  - If the array length is even, then the first array is a
+    slice from 0 to half minus 1
+  - The second array is always a portion from negative 1 to
+    negative half
+  - The penultimate test is for 1 element
+    + With my current solution, I can use a guard clause to
+      handle a one element array
+    + I can also operate on the input array destructively in
+      handling the first array so that I simply put any
+      remaining elements in the second array
+
