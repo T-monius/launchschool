@@ -1,0 +1,22 @@
+# included_notes.txt
+
+Understanding
+  - Method
+    > `include?`
+    > Cannot use the method `Array#include?`
+
+  - Input
+    > Array
+    > Search value
+      + Integer
+  - Task
+    > Determine whether or not the search value is in the array
+  - Output
+    > boolean
+
+Implementation
+  - Iteration
+  - Compare the search value to the other array elements one
+    by one
+    > Return true if the element exists
+    > False otherwise
