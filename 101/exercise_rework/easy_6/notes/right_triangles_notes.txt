@@ -1,0 +1,26 @@
+# right_triangles_notes.txt
+
+Understanding
+  - Input
+    > Positive integer
+  - Task
+    > Print a triangle with `n` number of stars
+    > Concerning myself with the perpendicular sides of the
+      triangle will automatically produce the diagonal
+    > Is there a minimum output?
+      + Is '1' star a triangle?
+    > Print from 1 star on the first row until n stars on the
+      last
+  - Output
+    > Triangle with `n` number of stars
+
+Implementation
+  - Iteration
+  - Either use `Integer#times` or `Integer#upto`
+  - Iterate printing index number of stars
+    > The stars must be prepended by a converse number of
+      spaces in relation to index v. total (n)
+    > Spaces will be n - index
+  - Print spaces
+  - Print stars
+  - Move on to the next iteration
