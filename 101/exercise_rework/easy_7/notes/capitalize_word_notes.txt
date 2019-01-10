@@ -1,0 +1,20 @@
+# capitalize_word_notes.txt
+
+Understanding
+  - Input
+    + Single argument
+    + String
+  - Task
+    + Operate on each word of the string input
+    + Capitalize all words
+      > Capitalize the first character of each word
+    + Transformation
+  - Output
+    + Single string
+
+Implementation
+  - Split the input string by spaces
+  - Transform the array elements
+    + Capitalize each element
+    + Store in a new array
+  - Join the new array
