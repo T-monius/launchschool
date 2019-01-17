@@ -1,0 +1,18 @@
+# binary_tree_notes.txt
+
+Understanding
+  - Searching with non-consecutive numbers not efficient with an array if
+    we intend to add values
+  - If a value is added to an array that would otherwise be between indexes
+    0 and -1, the entire array would have to be sorted
+  - Keeping track of gaps between numbers would allow us to insert a new
+    value
+    + Still not ideal
+    + The LS explanation mentions having to shift values, but I would think
+      removing the placeholder (`nil`) would not require shifting...
+  - Binarey Search Tree
+    + A subsequent value added is based on the top-down traversing of the
+      tree
+    + Value added v. value at traversal
+    + Greater than or less than: BINARY
+    + 
