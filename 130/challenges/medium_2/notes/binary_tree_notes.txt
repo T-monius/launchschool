@@ -35,7 +35,7 @@ Data Structure
       > When invoked, it returns the integer value
     + `each` method traverses the binary tree
       > Must return an enumerator if not given a block
-      > This probably indicates that is 'piggy-backs' off of the
+      > This probably indicates that it 'piggy-backs' off of the
         `Enumerable#each` method.
     + `insert` method places the input (Integer) in the appropriate `left`
       `right` instance variable
@@ -50,6 +50,12 @@ Implementation
         set the new `Bst` object as its value
       > Else call the current values `insert`
   - `Bst#each`
-    + In order to traverse a tree, the values stored in it must be retrieved
-    + Helper to retrieve nested data? `right` and `left`?
-    + Data points stored in an array that is iterated with `Array#each`?
+    + Each called on a node (`Bst` object)
+      > Iteration
+      > Any item to my left?
+        = If yes
+          - If it in already_iterated array
+            + I iterate
+          - Else
+            + push self to on_hold array
+

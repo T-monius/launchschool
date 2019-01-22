@@ -2,6 +2,7 @@
 require 'pry'
 
 class Bst
+  @@buffer = []
   include Comparable
   attr_reader :data, :right, :left
 
@@ -12,20 +13,37 @@ class Bst
   def insert(value)
     value.instance_of?(Bst) ? new_data = value : new_data = Bst.new(value)
     if new_data <= self
-      # binding.pry
       left ? left.insert(new_data) : self.left = new_data
     else
-      # binding.pry
       right ? right.insert(new_data) : self.right = new_data
     end
   end
 
   def each
-    
+    left.each if left
+    @@buffer << self.data
+    right.each if right
+    @@buffer.each { |bst_instance| yield(bst_instance) } if block_given?
+    @@buffer.clear if block_given?
+    self if block_given?
+    @@buffer.to_enum unless block_given?
   end
+
+  # def each
+  #   left.each if left
+  #   enum = Enumerator.new do |yielder|
+  #     yielder << self.data
+  #   end
+  #   right.each if right
+  #   enum
+  # end
 
   def <=>(other_bst)
     data <=> other_bst.data
+  end
+
+  def self.clear_buffer
+    @@buffer.clear
   end
 
   protected
@@ -33,11 +51,13 @@ class Bst
 end
 
 # four = Bst.new(4)
-# p four
+# # p four
 # four.insert(5)
-# p four
+# # p four
 # four.insert(3)
-# p four
+# # p four
 # four.insert(2)
-# p four
-# p four.left.left.data
+# # p four
+# # p four.left.left.data
+
+# four.each { |datapoint| p datapoint }
