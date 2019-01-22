@@ -19,24 +19,23 @@ class Bst
     end
   end
 
-  def each
-    left.each if left
-    @@buffer << self.data
-    right.each if right
-    @@buffer.each { |bst_instance| yield(bst_instance) } if block_given?
-    @@buffer.clear if block_given?
-    self if block_given?
-    @@buffer.to_enum unless block_given?
-  end
-
   # def each
   #   left.each if left
-  #   enum = Enumerator.new do |yielder|
-  #     yielder << self.data
-  #   end
+  #   @@buffer << self.data
   #   right.each if right
-  #   enum
+  #   @@buffer.each { |bst_instance| yield(bst_instance) } if block_given?
+  #   @@buffer.clear if block_given?
+  #   self if block_given?
+  #   @@buffer.to_enum unless block_given?
   # end
+
+  def each(&block)
+    return enum_for(:each) unless block_given?
+    
+    left.each(&block) if left
+    block.call(data)
+    right.each(&block) if right
+  end
 
   def <=>(other_bst)
     data <=> other_bst.data
