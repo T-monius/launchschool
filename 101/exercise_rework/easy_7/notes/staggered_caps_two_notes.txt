@@ -1,0 +1,22 @@
+# staggered_caps_two_notes.txt
+
+Understanding:
+  - Parlay the previously written method
+    + It capitalized every odd index
+  - Input
+    + String
+  - Task
+    + Capitalize every other alpha character
+  - Output
+    + String
+    + Every other alpha character is capitalized
+
+Implementation
+  - Since the last method accomplished its task by counting the index, it
+    will be useless for this go around
+  - I can toggle a flag
+    + Starts on
+  - Iterate a string
+    + If the character is alpha
+      > Capitalize if the flag is true
+      > Toggle the flag
