@@ -1,0 +1,18 @@
+# end_is_near_notes.txt
+
+Understanding:
+  - Input
+    + String
+    + words
+      > Any sequence of non-blank characters
+      > Always two or more words present
+  - Task
+    + Identify the words in the string
+    + Select the penultimate word
+  - Output
+    + String
+    + Penultimate word
+
+Implementation
+  - Split the string by spaces
+  - Slice out the second to the last word or index -2
