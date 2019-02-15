@@ -141,7 +141,7 @@ class SimpleLinkedListTest < Minitest::Test
   end
 
   def test_from_a_10_items
-    skip
+    # skip
     l = SimpleLinkedList.from_a((1..10).to_a)
     assert_equal 10, l.size
     assert_equal 1, l.peek
@@ -149,23 +149,23 @@ class SimpleLinkedListTest < Minitest::Test
   end
 
   def test_to_a_empty_list
-    skip
+    # skip
     l = SimpleLinkedList.new
     assert_equal [], l.to_a
   end
 
   def test_to_a_of_1_element_list
-    skip
+    # skip
     assert_equal [1], SimpleLinkedList.from_a([1]).to_a
   end
 
   def test_to_a_of_2_element_list
-    skip
+    # skip
     assert_equal [1, 2], SimpleLinkedList.from_a([1, 2]).to_a
   end
 
   def test_reverse_2_element_list
-    skip
+    # skip
     list = SimpleLinkedList.from_a([1, 2])
     # list_r and list need not be the same object
     list_r = list.reverse

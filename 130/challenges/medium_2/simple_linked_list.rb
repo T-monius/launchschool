@@ -1,4 +1,5 @@
 # simple_linked_list.rb
+require 'pry'
 
 class Element
   attr_accessor :datum, :next
@@ -36,6 +37,7 @@ class SimpleLinkedList
   def peek
     last = elements_array.last
     return last if last.nil?
+    # binding.pry
     last.datum
   end
 
@@ -50,24 +52,21 @@ class SimpleLinkedList
   def to_a
     elements_array.map do |el|
       el.datum
-    end
+    end.reverse
   end
 
   def reverse
     elements_array.reverse_each.with_object(SimpleLinkedList.new) do |el, reversed_arr|
-      reversed_arr << Element.new(el.datum)
-    end.to_a
+      reversed_arr.push(Element.new(el.datum))
+    end
   end
 
   def self.from_a(arr)
     list = SimpleLinkedList.new
     return list if arr.nil?
-    if list.elements_array.last.tail?
-      previous_element = nil
-    else
-      previous_element = list.elements_array.last.datum
+    arr.reverse.each do |el|
+      list.push(el)
     end
-    arr.each { |el| list.push(Element.new(el, previous_element)) }
     list
   end
 end
