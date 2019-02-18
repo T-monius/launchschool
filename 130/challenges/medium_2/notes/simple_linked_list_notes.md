@@ -46,7 +46,7 @@ push-down stacks
 - `pop`
   + Removes the most recently added item
 - `to_a`
-  + Returns an array of all of the values of the linked list in the order of the list
+  + Returns an array of all of the values of the linked list with the first element input as the first item in the array
 - 'reverse'
   + Reverses the order of the linked list
     * The oldest item is now the newest
@@ -75,6 +75,15 @@ push-down stacks
   + Return the value of the element at index `0`
 - `head`
   + Return the element at index `0`
+- `from_a`
+  + Instantiate a new linked list object
+  + If the input array is empty then return an empty list
+  + Iterate the elements of the input array and make them `Element` class objects
+    * The first element's `next` element is nil
+    * Instantiate a variable to nil to pass in for that object
+    * The second element's `next` element is the previous element in the list
+- `to_a`
+  + Since the first element of the 'linked list' is stored as the last element of the internal `elements_array` instance variable, it must be returned in reverse order of that in which the elements are stored.
 - `reverse`
   + Instantiate a new linked list
   + Iterate over the current list in reverse order and push the value of its elements to the new linked list at each iteration

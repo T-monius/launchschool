@@ -57,7 +57,7 @@ class SimpleLinkedList
 
   def reverse
     elements_array.reverse_each.with_object(SimpleLinkedList.new) do |el, reversed_arr|
-      reversed_arr.push(Element.new(el.datum))
+      reversed_arr.push(el.datum)
     end
   end
 
