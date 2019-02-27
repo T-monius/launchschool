@@ -15,5 +15,3 @@ def fizzbuzz(startpoint, endpoint)
   end
   puts
 end
-
-fizzbuzz(1, 15)
