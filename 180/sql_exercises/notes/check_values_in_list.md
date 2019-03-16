@@ -10,6 +10,7 @@
 - I created mine with a long convoluded constraint
 
 ### Solution
+
 ```sql
 ALTER TABLE stars
 ADD CHECK (spectral_type IN ('O', 'B', 'A', 'F', 'G', 'K', 'M')),
