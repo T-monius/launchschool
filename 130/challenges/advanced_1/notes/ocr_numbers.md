@@ -9,7 +9,7 @@
     * Pipes, underscores, spaces
     * Pipes
       > Vertical
-        - 2 and/or 4th position
+        - 2 and/or 3rd position
       > Lateral
         - 1 and/or 3rd position
     * Underscores
@@ -23,6 +23,10 @@
       > Lateral
         - Anywhere
       > Fourth row is always blank (spaces)
+    * Newlines (`"/n"`)
+      > If a line doesn't contain a character, it is simply a newline
+      > A final character in a line is followed immediately by a newline
+        - There is no space to serve as a placeholder
 
 ### Task
 - Determine which number is represented
@@ -34,7 +38,7 @@
   + Correct size
     * Return `?` if the input is not recognizable
   + Incorrect size
-    * Return and error
+    * Return an error
 
 #### Step Two
 - Multi-character binary strings
@@ -51,6 +55,7 @@
 - Output
   + Several lines joined with a comma
 
+#### Clases
 - `OCR` class
   + An object of this class can be a single digit or multiple
     * 
@@ -62,5 +67,18 @@
 
 ### Implementation
 - Create a `OCRDigit` class?
-  + `size` method
-  + 12 characters plus three newlines (`\n`)
+  + Constructor takes three string arguments
+    * Each string represent a line of digits
+  + Define acceptable sizes
+    * Start w/ '0' and '1'
+    * Store the approved sizes in a constant as a collection
+    * Each approved size has a set corresponding letters
+      - Define methods to verify if string represents a given letter
+      - The methods determine if characters are at certain indexes of the string
+
+- `OCR` class
+  + Parse out the indivivual digits by newlines
+    * The number of digits is reflected by the length between newlines
+    * Length between newlines divided by 3 is the number of digits
+    * Each digit is represented by a range of indexes in each line
+
