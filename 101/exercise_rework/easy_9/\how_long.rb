@@ -1,3 +1,0 @@
-# how_long.rb
-
-
