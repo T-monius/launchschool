@@ -1,8 +1,13 @@
-## Complete the Program = Cats!
+## Complete the Program - Cats!
 
 ### Understanding
-- The parent class `Pet` takes two arguments in the constructor
-- The child class takes 3
+- The `Pet` class is defined with a constructor that takes to parameters
+  + `name`
+  + `age`
+  + The parameters are assigned as state to instance variables by the same name
+  + The `Cat` class inherits from the `Pet`
+    * The constructor takes three parameters v. two
+    * Third a color description 
 
 ### Task
 - Consider the following program.
@@ -31,4 +36,6 @@ My cat Butterscotch is 10 years old and has tan and white fur.
 ```
 
 ### Implementation
-- 
+- Call `super` for the first two variables of the cat constructor
+- Assign the third to a `color` instance variable
+- Define `to_s` to output the given string with descriptors interpolated
