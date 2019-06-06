@@ -26,7 +26,7 @@
     * Newlines (`"/n"`)
       > Each digit is a series of 3 newline characters
         + Nothing follows the last newline character
-        + A regex could parse and input string for series of 3 newlines
+        + A regex could parse an input string for series of 3 newlines
       > If a line doesn't contain a character, it is simply a newline
       > A final character in a line is followed immediately by a newline
         - There is no space to serve as a placeholder
@@ -111,8 +111,26 @@
     * Join them into one sring (with commas if necessary)
 
 #### Step 1
+  + Build a regex to parse by newlines
+    * `OCR` class
+    * The initial match will be independent of size
+  + Build another regex
+    * `OCRDigit`
+    * Checks size
+    * Here is where an error could be thrown
   + Hash with string for `0` and `1` as the key
     + The given integers are the values
   + Array of acceptable sizes
     + Sizes of strings that can form digits
     + The array can be updated as digits are added
+
+#### Step 3
+  + Parse the string for newlines
+    * First group is top half
+    * Second is middle
+    * Third is bottom (should be all blank)
+  + Take each set of "newline splits"
+    * Split these sections by consecutive three characters
+    * Combine each associated section for an index (top, middle, bottom) by a newline
+    * Store them in an array
+    

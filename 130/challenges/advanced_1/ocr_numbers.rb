@@ -1,28 +1,88 @@
 # ocr_numbers.rb
 
-class OCRDigit
-  possible_ocrs = { 0 => " _\n| |\n|_|\n", 1 => "\n  |\n  |\n" }
-  attr_accessor digit:, ocr:
+require 'pry'
 
-  def initialize(row_1, row_2, row_3)
-    full_string = first_row + "\n" + second_row + "\n" + third_row + "\n"
-    self.digit = validate(full_string)
-    self.ocr = possible_ocrs(digit)
+class OCRDigit
+  OCRS = {" _\n| |\n|_|\n" => 0, "\n  |\n  |\n" => 1, " _\n _|\n|_\n" => 2,
+          " _\n _|\n _|\n" => 3, "\n|_|\n  |\n" => 4, " _\n|_\n _|\n" => 5,
+          " _\n|_\n|_|\n" => 6, " _\n  |\n  |\n" => 7, " _\n|_|\n|_|\n" => 8,
+          " _\n|_|\n _|\n" => 9, "   \n  |\n  |\n" => 1, " _ \n _|\n|_ \n" => 2,
+          " _ \n _|\n _|\n" => 3, "   \n|_|\n  |\n" => 4, " _ \n|_ \n _|\n" => 5,
+          " _ \n|_ \n|_|\n" => 6, " _ \n  |\n  |\n" => 7, " _ \n|_|\n|_|\n" => 8,
+          " _ \n|_|\n _|\n" => 9, " _ \n| |\n|_|\n" => 0 }
+  attr_accessor :digit, :string_representation
+
+  def initialize(str)
+    valid?(str)
+    self.digit = convert(str)
+    self.string_representation = OCRS.invert[digit]
   end
 
-  def validate(str)
-    ocr_result = possible_ocrs.invert[str]
+  def to_s
+    digit.to_s
+  end
+
+  private
+
+  def valid?(str)
+    raise StandardError unless str.match?(/( _)?\n[| ][_ ][| ]?\n[| ][_ ]|\n/)
+  end
+
+  def convert(str)
+    ocr_result = OCRS[str]
     ocr_result ? ocr_result : '?'
   end
 end
 
 class OCR
   def initialize(str)
-    str
+    # three_newlines = /.*\n.*\n.*\n/
+    possible_digits = parse(str) # str.scan(three_newlines)
+    # binding.pry
+    self.ocr_digits = possible_digits.map do |potential_digit|
+      OCRDigit.new(potential_digit)
+    end
+  end
+
+  def convert
+    ocr_digits.join
+  end
+
+  private
+
+  attr_accessor :ocr_digits
+
+  def parse(str)
+    ocr_partials = str.split("\n")
+    top, middle, bottom = ocr_partials.map do |partial_ocr|
+      partial_ocr.scan(/[ |_]{2,3}/)
+    end
+    bottom.map.with_index do |bottom_chars, i|
+      "#{top[i]}\n#{middle[i]}\n#{bottom_chars}\n"
+    end
   end
 end
 
+# ten = <<-NUMBER.chomp
+#     _
+#   || |
+#   ||_|
+
+#     NUMBER
+
+# ones_zeros = <<-NUMBER.chomp
+#        _     _        _  _
+#   |  || |  || |  |  || || |
+#   |  ||_|  ||_|  |  ||_||_|
+
+#     NUMBER
+
+# OCR.new(ten)
+
+# OCR.new(ones_zeros)
+
 =begin
+# Initial Convoluded attempt
 class OCRDigit
   possible_ocrs = { 0 => " _\n| |\n|_|\n", 1 => "\n  |\n  |\n" }
   attr_accessor digit:, ocr:
