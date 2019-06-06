@@ -36,16 +36,18 @@ end
 
 class OCR
   def initialize(str)
-    # three_newlines = /.*\n.*\n.*\n/
-    possible_digits = parse(str) # str.scan(three_newlines)
-    # binding.pry
-    self.ocr_digits = possible_digits.map do |potential_digit|
-      OCRDigit.new(potential_digit)
+    three_newlines = /.*\n.*\n.*\n/
+    ocr_lines = str.scan(three_newlines)
+    self.ocr_digits = ocr_lines.map do |inner_line|
+      binding.pry
+      parse(inner_line).map do |potential_digit|
+        OCRDigit.new(potential_digit)
+      end
     end
   end
 
   def convert
-    ocr_digits.join
+    ocr_digits.map { |ocr_line| ocr_line.join }.join(',')
   end
 
   private

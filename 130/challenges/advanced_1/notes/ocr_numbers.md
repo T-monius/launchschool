@@ -133,4 +133,13 @@
     * Split these sections by consecutive three characters
     * Combine each associated section for an index (top, middle, bottom) by a newline
     * Store them in an array
-    
+
+#### Step 4
+  + Parse the input by three newline characters
+  + Each set of three newlines is a line of new digits
+    * Iterate the lines
+    * Get an array of digits digits for each line
+    * Store in `ocr_digits`
+  + Change the `conver` method
+    * Perform one join if no inner arrays
+    * Perfomr two joins if inner arrays
