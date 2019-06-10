@@ -139,7 +139,7 @@
   + Each set of three newlines is a line of new digits
     * Iterate the lines
     * Get an array of digits digits for each line
-    * Store in `ocr_digits`
+    * Store in `ocr_digitst`
   + Change the `conver` method
     * Perform one join if no inner arrays
-    * Perfomr two joins if inner arrays
+    * Perform two joins if inner arrays

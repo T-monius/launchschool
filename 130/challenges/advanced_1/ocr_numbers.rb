@@ -1,6 +1,6 @@
 # ocr_numbers.rb
 
-require 'pry'
+# require 'pry'
 
 class OCRDigit
   OCRS = {" _\n| |\n|_|\n" => 0, "\n  |\n  |\n" => 1, " _\n _|\n|_\n" => 2,
@@ -36,10 +36,11 @@ end
 
 class OCR
   def initialize(str)
-    three_newlines = /.*\n.*\n.*\n/
-    ocr_lines = str.scan(three_newlines)
+    # three_newlines = /.*\n.*\n.*\n/
+    multiple_rows = /.*\n.*\n.*\n\n.*\n.*\n.*\n\n.*\n.*\n.*\n/
+    ocr_lines = [str] # str.scan(three_newlines)
+    ocr_lines = str.split("\n\n") if str.match?(multiple_rows)
     self.ocr_digits = ocr_lines.map do |inner_line|
-      binding.pry
       parse(inner_line).map do |potential_digit|
         OCRDigit.new(potential_digit)
       end
@@ -64,61 +65,3 @@ class OCR
     end
   end
 end
-
-# ten = <<-NUMBER.chomp
-#     _
-#   || |
-#   ||_|
-
-#     NUMBER
-
-# ones_zeros = <<-NUMBER.chomp
-#        _     _        _  _
-#   |  || |  || |  |  || || |
-#   |  ||_|  ||_|  |  ||_||_|
-
-#     NUMBER
-
-# OCR.new(ten)
-
-# OCR.new(ones_zeros)
-
-=begin
-# Initial Convoluded attempt
-class OCRDigit
-  possible_ocrs = { 0 => " _\n| |\n|_|\n", 1 => "\n  |\n  |\n" }
-  attr_accessor digit:, ocr:
-
-  def initialize(row_1, row_2, row_3)
-    full_string = first_row + "\n" + second_row + "\n" + third_row + "\n"
-    self.digit = validate(full_string)
-    self.ocr = possible_ocrs(digit)
-  end
-
-  def validate(str)
-    ocr_result = possible_ocrs.invert[str]
-    ocr_result ? ocr_result : '?'
-  end
-end
-
-class OCR
-  def initialize(str)
-    row1, row2, row3 = str.split("\n")
-    longest_row = longest(rows)
-    rows[longest_row].each_cons
-  end
-
-  def longest(rows)
-    r = rows[0].length
-    r1 = rows[1].length
-    r2 = rows[2].length
-    if r >= r1 && r >= r2
-      0
-    elsif r1 >= r && r1 >= r2
-      1
-    elsif r2 >= r && r2 >= r1
-      2
-    end
-  end
-end
-=end
