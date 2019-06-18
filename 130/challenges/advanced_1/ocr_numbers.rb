@@ -37,9 +37,9 @@ end
 class OCR
   def initialize(str)
     # three_newlines = /.*\n.*\n.*\n/
-    multiple_rows = /.*\n.*\n.*\n\n.*\n.*\n.*\n\n.*\n.*\n.*\n/
-    ocr_lines = [str] # str.scan(three_newlines)
-    ocr_lines = str.split("\n\n") if str.match?(multiple_rows)
+    # multiple_rows = /.*\n.*\n.*\n\n.*\n.*\n.*\n\n.*\n.*\n.*\n/
+    # ocr_lines = [str] # str.scan(three_newlines)
+    ocr_lines = str.split("\n\n") #  if str.match?(multiple_rows)
     self.ocr_digits = ocr_lines.map do |inner_line|
       parse(inner_line).map do |potential_digit|
         OCRDigit.new(potential_digit)
