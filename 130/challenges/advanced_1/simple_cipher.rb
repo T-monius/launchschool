@@ -8,22 +8,21 @@ class Cipher
     self.key = str
   end
 
-  # def encode(text)
-  #   @offset = retrieve_offset
-  #   text.codepoints
-  #       .map { |num| num + offset }
-  #       .map(&:chr)
-  #       .join
-  # end
-
   def encode(text, operator= :+)
     key_codepoints = key.codepoints
     new_codepoints = []
 
     text.codepoints.each_with_index do |current_codepoint, i|
-      offset = key_codepoints[i] - 'a'.ord
-      new_codepoints << current_codepoint + offset if operator == :+
-      new_codepoints << current_codepoint - offset if operator == :-
+      offset = key_codepoints[i] % 'a'.ord
+      new_codepoint = 0
+      case operator
+      when :+
+        new_codepoint = current_codepoint + offset
+        new_codepoint = (new_codepoint % 122) + 96 if new_codepoint > 122
+      when :-
+        new_codepoint = current_codepoint - offset
+      end
+      new_codepoints << new_codepoint
     end
 
     new_codepoints.map(&:chr).join
