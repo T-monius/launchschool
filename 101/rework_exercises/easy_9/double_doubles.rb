@@ -1,5 +1,6 @@
 # double_doubles.rb
 
+require 'pry'
 # A double number is a number with an even number of digits whose
 # left-side digits are exactly the same as its right-side digits. For
 # example, 44, 3333, 103103, 7676 are all double numbers. 444, 334433,
@@ -12,6 +13,7 @@
 # Understanding:
 # Input
 #   Integer
+#   Assume all positive integers
 #   Assess the input as to whether it's a double number
 #   Double numbers are a repetition of the first half for the second
 #     Even number of digits 2 or greater
@@ -21,11 +23,11 @@
 
 def double?(int)
   str_int = int.to_s
-  str_length = str.length
-  half = str_int.length / 2 - 1
+  str_length = str_int.length
+  half_idx = str_int.length / 2 - 1
   return false if str_length.odd? || str_length < 2
-  return false if # Evaluate to see if the second half is the same as
-                  # the first
+  # binding.pry
+  return false if str_int[0..half_idx] != str_int[half_idx + 1..-1]
   true
 end
 

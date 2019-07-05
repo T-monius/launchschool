@@ -19,7 +19,6 @@ The longest sentence in this text is:
 The sentence has #{longest.split.size} words.
 msg
 
-# (/[\s]/)
 puts message
 
 sentences1 = text1.split(/[.?!]/)

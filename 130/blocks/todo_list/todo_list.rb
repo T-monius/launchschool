@@ -1,4 +1,4 @@
-# todo_list.rb
+# ls_todo_list1.rb
 
 # This class represents a todo item and its associated
 # data: name and description. There's also a "done"
@@ -43,6 +43,26 @@ class TodoList
   def initialize(title)
     @title = title
     @todos = []
+  end
+
+  def each
+    counter = 0
+    while counter < size
+      yield(@todos[counter])
+      counter += 1
+    end
+    self
+  end
+
+  def select
+    counter = 0
+    selection = TodoList.new(title)
+    while counter < size
+      selection << @todos[counter] if yield(@todos[counter])
+      counter += 1
+    end
+
+    selection
   end
 
   def size
@@ -108,43 +128,126 @@ class TodoList
     @todos
   end
 
-  def each
-    @todos.each do |todo|
-      yield(todo)
-    end
-    self
-  end
-
-  def select
-    list = TodoList.new(title)
+  def find_by_title(str)
+    selection = nil
     each do |todo|
-      list.add(todo) if yield(todo)
+      if todo.title == str || todo.description == str
+        selection = todo
+        break
+      end
     end
-    list
-  end
-
-  # returns first Todo by title, or nil if no match
-  def find_by_title(title)
-    select { |todo| todo.title == title }.first
+    selection
   end
 
   def all_done
-    select { |todo| todo.done? }
+    new_list = TodoList.new(title)
+    each do |todo|
+      new_list << todo if todo.done?
+    end
+    new_list
   end
 
   def all_not_done
-    select { |todo| !todo.done? }
+    new_list = TodoList.new(title)
+    each do |todo|
+      new_list << todo if !todo.done?
+    end
+    new_list
   end
 
-  def mark_done(title)
-    find_by_title(title) && find_by_title(title).done!
+  def mark_done(criteria)
+    each do |todo|
+      if todo.title == criteria || todo.description == criteria
+        todo.done!
+        break
+      end
+    end
+    nil
   end
 
   def mark_all_done
-    each { |todo| todo.done! }
+    each do |todo|
+      todo.done!
+    end
+    nil
   end
 
   def mark_all_undone
-    each { |todo| todo.undone! }
+    each do |todo|
+      todo.undone!
+    end
+    nil
   end
 end
+
+todo1 = Todo.new("Buy milk")
+todo2 = Todo.new("Clean room", 'Rick\'s insistent about this')
+todo3 = Todo.new("Go to gym")
+todo4 = Todo.new('Buy boxer shorts', 'Rick\'s insistent about this')
+
+list = TodoList.new("Today's Todos")
+list.add(todo1)
+list.add(todo2)
+list.add(todo3)
+list.add(todo4)
+
+# mark_all_done && mark_all_undone tests
+list.mark_all_done
+puts list
+list.mark_all_undone
+puts list
+
+=begin
+# mark_done
+list.mark_done('Rick\'s insistent about this')
+puts list
+
+# all_done && all_not_done tests
+
+list.mark_done_at(1)
+list.mark_done_at(2)
+
+puts list.all_not_done
+
+# find_by_title tests
+todo1 = Todo.new("Buy milk", 'Rick\'s insistent about this')
+todo2 = Todo.new("Clean room", 'Rick\'s insistent about this')
+todo3 = Todo.new("Go to gym")
+
+list = TodoList.new("Today's Todos")
+list.add(todo1)
+list.add(todo2)
+list.add(todo3)
+
+puts list.find_by_title("Buy boxer shorts")
+
+#each tests
+todo1 = Todo.new("Buy milk")
+todo2 = Todo.new("Clean room")
+todo3 = Todo.new("Go to gym")
+
+list = TodoList.new("Today's Todos")
+list.add(todo1)
+list.add(todo2)
+list.add(todo3)
+
+value = list.each do |todo|
+  puts todo                   # calls Todo#to_s
+end
+
+# #select tests
+todo1 = Todo.new("Buy milk")
+todo2 = Todo.new("Clean room")
+todo3 = Todo.new("Go to gym")
+
+list = TodoList.new("Today's Todos")
+list.add(todo1)
+list.add(todo2)
+list.add(todo3)
+
+todo1.done!
+
+results = list.select { |todo| todo.done? }    # you need to implement this method
+
+puts results.inspect
+=end

@@ -1,0 +1,15 @@
+body {
+  font: normal 14px Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  color: blue;
+}
+
+code {
+  color: green;
+  font-family: monospace;
+  text-decoration: underline;
+  font-style: italic;
+}

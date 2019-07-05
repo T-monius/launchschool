@@ -1,3 +1,12 @@
+def convert_to_base_8(n)
+  # conversion method
+end
+
+base8_proc = method(argument).to_proc
+
+# Invoke your custom proc with shorthand on a collection HERE
+
+
 # method_to_proc.rb
 
 # Understanding:

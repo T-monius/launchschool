@@ -1,0 +1,17 @@
+div {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 300px;
+  width: 300px;
+}
+
+.first-div {
+  background-color: #fcc;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.second-div {
+  background-color: #ccf;
+  border: 5px solid black;
+}

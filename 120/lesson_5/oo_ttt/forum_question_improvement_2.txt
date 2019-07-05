@@ -1,0 +1,55 @@
+# forum_question_improvement_2.txt
+
+Assignment: Some Improvements, (2) -- Why Would this Alternative Solution work?
+Question • Torrel Moseley ,  18 days ago
+While trying to solve the problem of rewriting display_board to be invoked display_board(clear_screen: false) v. display_board(false), I came up with a solution which seems to work, but upon looking at the LS solution, I'm not completely clear as to why.
+
+I initially assumed that perhaps the clear_screen: false syntax may be part of hash constructor notation of some kind but obviously hadn't seen that syntax before so decided to play around with it a bit in 'irb'. I found that:
+
+def display_board(clear_screen: false)
+  system 'clear' if clear_screen
+end
+would clear the screen if display_board(clear_screen: true) were invoked along with some other variations. It was just a matter of changing the method around a bit to get it to clear the screen only when clear_screen wasn't false. I used a version of this implementation to solve the problem before looking at the LS solution.
+
+It's clear in the LS solution that clear_screen is a key in a hash as it's assigned to options as such. However, if the method is defined without including options as a hash implicitly, what is clear_screen in that scenario?
+
+For example:
+
+def display(clear_screen: false)
+  clear_screen.class
+end
+This code returns FalseClass when called in irb. I discovered this while playing around with the syntax before looking at the LS solution. Therefore, in this context it would seem that clear_screen is functioning as a local variable within the scope of the display method.
+
+However, the something: false syntax does not work to assign a variable outside of the context of it's use in a parameter:
+
+variable: false
+The above will return an error in the regular scope of the program.
+
+My question, then, is whether I should just completely ignore the fact that my inadvertently assigning a variable with that syntax 'works'. Is this a case where Ruby's powerful syntactical sugar allows for some bizarre behavior, or did I stumble across some valid Ruby code?
+
+Reply 0 Likes   Unwatch    Star  Edit
+3 Replies
+E54f216c0fa22c19849bf02d1f1d3a9c?s=40
+Tyler Lippert (TA)
+18 days ago
+Hi Torrel,
+
+What you discovered is a nice feature that Ruby added in around v2.0, keyword arguments. Using keyword argument allows you some additional flexibility and cuts back a bit on boilerplate code as well. Instead of passing in a hash of options, you can instead specify keyword arguments that a method can accept.
+
+In your case, what you're doing is telling Ruby that you have a method called display, and it accepts an argument called clear_screen with a default value of false. You can call display without passing in any argument because of that default parameter value: display # => FalseClass.
+
+But, if you do want to call a method with keyword arguments, then you have to use a particular syntax. You can't just call, display(true), you have to pass in a hash (either explicit or implicit). The values in that hash are automatically assigned to the parameters in your method signature that match your hash keys, at least when you call that method I mean.
+
+Here's a bit of reading I found on this by ThoughtBot if you want to learn more: https://robots.thoughtbot.com/ruby-2-keyword-arguments
+
+Reply   Permalink
+27242301?s=40
+Torrel Moseley
+18 days ago
+Thank you Tyler! I found the explanation you gave as well as the further reading very informative. I now understand the concepts better as well as the intent of these types of arguments (be they keyword arguments or hash options). I'll probably refer back to your explanation a couple of more times until it feels very familiar.
+
+Reply 0 Likes Edit  Permalink
+E54f216c0fa22c19849bf02d1f1d3a9c?s=40
+Tyler Lippert (TA)
+18 days ago
+Glad to help! Let me know if you have any other questions.

@@ -165,6 +165,7 @@ class Computer < Player
 
   def initiailize
     super
+    # Does this work? 7.31.18
     create_computer(name)
   end
 

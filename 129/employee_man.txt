@@ -1,0 +1,20 @@
+# employee_man.txt
+
+Employee Management App
+
+Nouns: Employee, Manager, Executive, vacation days, desk, name, serial number,
+
+Verbs: take vacation, delegate
+
+Association:
+  Employee (either part-time or full-time)
+      > name
+      > serial number
+      > desk
+    Full Time Employee
+      > vacation days
+      > Takes vacation
+      Manager
+        > has ability to delegate
+      Exex
+        > has ability to delegate

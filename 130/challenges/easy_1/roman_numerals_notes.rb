@@ -24,13 +24,12 @@
 #     to test. Can add the module by hopping into Integer
 #     + Such a bad idea
 #   - Set empty return string
-#   - Iterate over the array and 
 #     > Modulus off 1000s assigning remainder and number
 #       + Push 'M' * remainder to roman_numerals string
-#     > Mosulus off 500s if number < 900 reassigning variables
+#     > Modulus off 500s if number < 900 reassigning variables
 #       + Push 'D' if remainder > 0
 #     > Modulus off 100s reassigning variables
-#       + Push 'CM' if ramainder == 9
+#       + Push 'CM' if remainder > 9
 #       + Push 'C' * remainder elsewise
 #     > Mosulus off 50s if number < 90 reassigning variables
 #       + Push 'L' if remainder > 0

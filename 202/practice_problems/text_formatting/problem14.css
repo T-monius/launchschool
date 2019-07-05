@@ -1,0 +1,22 @@
+body {
+  font-family: serif;
+}
+
+p {
+  font-size: 18px;
+}
+
+mark {
+  background-color: yellow;
+  font-size: 12px;
+  font-family: Courier, monospace;
+}
+
+strong {
+  font-size: 15px;
+}
+
+em {
+  font-size: 20px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,7 @@
+# Backend Feedback
+
+Learning from fundamentals helped me to recognize concepts in languages I wasn't familiar with while working at a MarTech company. I worked at a marketing company for a few months earlier this year that had started out as a Tech company. I thought the role would be more tech oriented as well as the company, but as the company was in transition, the role leaned more toward marketing as the company's profit center shifted. I eventually left the company with hopes to find a role at a serious tech company in the future.
+
+That being said, I worked with a couple of pieces of technology with which I had no previous experience and was able to execute because I understood the concepts. For example, I was able to enhance a script to use local browser storage although it was written in JavaScript with which I've had little experience with, and this was a very Front End heavy concern. My Front End understanding is still limited but I comprehended the concepts as presented in the Web Development coursework.
+
+Also, I was able to provide important marketing segmentation data for a very large corporate client with my database knowledge; this despite only being about half way through the 180 courses at the time. I ran some rather complex database queries while piggy backing off of some even more complex queries that were previously written in TSQL. There were no formal keys to join some of the relations which were complex in themselves as the database hadn't been normalized for our purposes, and we had read only access.
