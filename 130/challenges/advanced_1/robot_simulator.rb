@@ -58,11 +58,13 @@ class Simulator
     str.chars.map { |command| COMMANDS[command] }
   end
 
-  def place
-    
+  def place(robot, x:, y:, direction:)
+    robot.at(x, y)
+    robot.orient(direction)
   end
 
   def evaluate(robot, str)
-    
+    commands = instructions(str)
+    commands.each { |command| robot.send(command) }
   end
 end
