@@ -10,16 +10,20 @@ class Matrix
   end
 
   def columns
-    column_total = @matrix[0].length
-    all_columns = []
-    column_total.times do |i|
-      current_column = []
-      @matrix.each do |row|
-        current_column << row[i]
+    first_row = @matrix.first
+    remaining_rows = @matrix[1..-1]
+    first_row.zip(*remaining_rows)
+  end
+
+  def saddle_points
+    valids = []
+    @matrix.each_with_index do |row, row_idx|
+      row.each_with_index do |element, col_idx|
+        valids << [row_idx, col_idx] if great_in_row?(element, row) &&
+                                        least_in_column?(element, col_idx)
       end
-      all_columns << current_column
     end
-    all_columns
+    valids
   end
 
   private
@@ -28,5 +32,14 @@ class Matrix
     matrix_representation.split("\n").map do |row_representation|
       row_representation.split.map(&:to_i)
     end
+  end
+
+  def great_in_row?(element, row)
+    row.all? { |other_element| element >= other_element }
+  end
+
+  def least_in_column?(element, col_idx)
+    column = columns[col_idx]
+    column.all? { |other_element| element <= other_element }
   end
 end

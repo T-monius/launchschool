@@ -11,7 +11,9 @@
   + `#rows`
     * Getter
     * Returns rows at an index
-
+  + `#saddle_points`
+    * Returns an array of all saddle points
+    * coordinates
 
 ### Task
 - Write a program that detects saddle points in a matrix.
@@ -37,4 +39,23 @@ Your code should be able to provide the (possibly empty) list of all the saddle 
 Note that you may find other definitions of matrix saddle points online, but the tests for this exercise follow the above unambiguous definition.
 
 ### Implementation
-- 
+- initial implementation of `#columns`
+
+```ruby
+    column_total = @matrix[0].length
+    all_columns = []
+    column_total.times do |i|
+      current_column = []
+      @matrix.each do |row|
+        current_column << row[i]
+      end
+      all_columns << current_column
+    end
+    all_columns
+```
+- `#saddle_points`
+  + Iterate each row
+  + Iterate number in each row
+    * See if num >= numbers in the row
+    * See if num <= numbers in column
+    * Store in return array if so
