@@ -16,14 +16,14 @@ class Matrix
   end
 
   def saddle_points
-    valids = []
+    coordinates = []
     @matrix.each_with_index do |row, row_idx|
       row.each_with_index do |element, col_idx|
-        valids << [row_idx, col_idx] if great_in_row?(element, row) &&
-                                        least_in_column?(element, col_idx)
+        coordinates << [row_idx, col_idx] if great_in_row?(element, row) &&
+                                             least_in_column?(element, col_idx)
       end
     end
-    valids
+    coordinates
   end
 
   private
