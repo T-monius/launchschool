@@ -82,4 +82,53 @@
   + Original JS runtime environment
   + Still the most dominant
   + 2 Main Purposes:
-    
+    1. Programmatically alter web pages based on user actions
+      * Needs an API through which to manipulate the structure and appearance of the HTML page
+    2. Exchange messages with a server over a network
+      * Let the programmer use the OS's ability to send and receive messages over a network
+  + Most browsers allow accomplishing these tasks
+  + DOM API lets you manipulate the structure and appearance of a web page.
+  + XHR interface and Fetch API
+    * Let you communicate with a server
+  + Browsers provide "Developer Tools"
+    * REPL
+    * Debugger
+    * Network Inspector
+    * Performance profiler
+    * Etc.
+- Node.js
+  + Turns JS into a general-purpose programming language
+  + Added features to Chrome V8 JS engine for desktop and server computing
+  + Capabilities for general-purpose programming environment
+    * Ability to read and write disk files (disk I/O)
+    * Ability to read and write via the terminal (standard I/O)
+    * Ability to send and receive messages over a network (network I/O)
+    * Ability to interact w/ a database
+- Other JS Runtime Environments
+  + Ex, Adobe's Acrobat (automate and animate elements in a doc)
+  + Ex, ActionScript and Gnome shell
+
+#### Installation
+- Browser can run everything in the Book
+- Node.js more convenient
+  + No need to embed `.js` file in a webpage to run it.
+  + Node.js version 8.11.4 or higher
+  ```
+  npm -v        # -v requests the version number
+  6.9.0
+  ```
+
+#### Using a Code Editor
+- Create plain tex docs w/ no styling or formatting
+- Can use your favorite one (Vim, TextMate, Emacs, Notepad++, etc.)
+- Atom recommended
+  + Powerful
+  + Free
+  + Open source
+- **Note**: advanced text editors are for writing and add unnecessary styling and formatting
+  + Code won't work
+
+#### Stylish JavaScript
+- Plenty of overlap on guidelines
+- It's hard enough to understand code written by someone else
+ + Don't make it harder w/ unusual or non-standard stylistic choices.
