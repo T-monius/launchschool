@@ -132,3 +132,36 @@
 - Plenty of overlap on guidelines
 - It's hard enough to understand code written by someone else
  + Don't make it harder w/ unusual or non-standard stylistic choices.
+ + LS recommendations for JS guidelines
+  * Set text editor to use apaces and not tabs
+  * 2 space indentation
+  * Try to limit lines to 80 characters
+  `//` for beginning of a comment
+    - `/* */` for multiline comments
+    - Don't overdo your comments; let your code do the talking
+
+  * Use camelCase for variable and function names
+    - Lower case starting letter
+    * uppercase first letter of subsequent words
+  * Pascal Case for some function names - constructor functions
+  * Uppercase names w/ underscores to represent const values
+  * All names, alphabetic and numeric characters only
+    - First character alpha
+    - No consecutive underscores w/ constants
+    - No beginning or ending w/ underscores
+  * When writinga a code block with curly braces, write the opening brace on the same line as the function name or condition expression. Use a single space between the function name and the opening brace.
+  * Spaces between operators and operands
+  * Semicolons to terminate each logical oine of code unless the line ends w/ `{`, `}`, or `:`
+  * On Semicolons
+    - Most lines end w/ a semi-colon
+    - Some exceprions: blank line, curly braces
+    - JS is orgiving
+    - JS automatically but invisibly inserts semicolons
+    - No -semicolons- ever style
+      + Requieres care
+      + Insertion mechanism makes mistakes when it sees your code differently than you intended.
+      + Tricky to diagnose problems
+      + Discouraged in LS 
+    - REPL style omits semicolons
+
+#### The Command Line 
