@@ -16,7 +16,7 @@ function rot13(str) {
     var asciiNum = str[i].charCodeAt(0);
     if (asciiNum >= 65 && asciiNum <= 90) {
       asciiNum = shift13(asciiNum, 65, 90);
-    } else if (asciiNum >= 97 && asciiNum <= 122) {
+    } elseif (asciiNum >= 97 && asciiNum <= 122) {
       asciiNum = shift13(asciiNum, 97, 122);
     }
     encryptedStr += String.fromCharCode(asciiNum);
