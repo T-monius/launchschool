@@ -164,4 +164,73 @@
       + Discouraged in LS 
     - REPL style omits semicolons
 
-#### The Command Line 
+#### The Command Line
+- Command Line Commands
+  + ...
+  + `rmdir`
+  + Can remove both a directory and files with `rm -R` *Interesting*
+- The Node REPL
+  + Open with `node`
+  + LS adds an `=` to stylistically indicate `node`'s output
+  + `Control + C` twice to exit
+    * Or, "Control + D" once
+
+#### Running JS
+- Running JavaScript files from the command line
+  + `node` command plus file name (`.js`)
+  + `.js` file run by an *interpreter*
+  + Takes JS code and turns it into something your computer can understand
+- "Control + C" to stop execution of a long running program
+- Running JS in the Browser
+  + Any browser
+  + Chrome updated frequently; can experiment
+    * REPL
+    * Run JS from files
+  + Running code from a file in a browser is more complicated than running it from the command line
+    * Embed code in HTML file
+    1. Create an HTML file
+    2. Add a `script` tag w/ the path to your `.js` file in the `src` attribute
+    3. Save the file and open it in the Browser. Open console to see the output.
+
+#### The Chrome Console
+- Click "Console" in dev tools
+- Console has many uses
+  + Also a REPL
+
+#### Documentation
+- Without docs, there's no way to know the features without reading the source code directly
+- JS's docs focus on data types
+  + Operations performed on them
+  + Components your computer can reuse
+    * Ex, `toUpperCase` performed on strings
+- API sometimes used to refer to docs
+  + Confusing
+  + Incorrect, but understandable to know what the person is talking about
+- Two types of reusable code in typical programming environment:
+  1. Components and operations that are part of the core language, *standard library*
+  2. Components and operations specific to a runtime environment
+  + We'll cover the core language docs
+  + MDN
+    * Constructors and Name Types
+      - Name of the constructor for the data type (e.g. String) **FC**
+      - PascalCase for constructor names (e.g. RegEx)
+      - Constructor
+        + Further explanation in OO section
+        + Factory that creates values of a type
+        + Blueprint for data of a value type **FC**
+      - Docs on constructor
+        + Describe how you can use it to create values
+        + Operation to perform on that value type
+    * Method Name
+      - In JavaScript, methods are functions that need a value that you can use to call the function.
+      - 2 types of methods in MDN docs:
+        1. Instance Methods
+          + `Constructor.prototype.methodName()`
+        2. Static Methods
+          + `Constructor.methodName()`
+      - *Note*: instance methods have `prototype` as part of their name
+        + Discuss further in OO
+        + Hard to distinguish instance and static methods
+        + Thumbs down icon next to some property and method names
+          * Identifies deprecated properties and methods
+          * Avoid deprecated items
