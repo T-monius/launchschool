@@ -1,13 +1,15 @@
-// array_operations1.js
+// array_operations3.js
 
 var count = [1, 2, 3];
 
 function unshift(arr, insertionValue) {
-  var tempArray = arr;
-  arr[0] = insertionValue;
-
-  for (var i = 0; i < tempArray.length; i += 1) {
-    arr[i + 1] = tempArray[i];
+  var currentValue;
+  var newValue = insertionValue;
+  var iterations = arr.length;
+  for (var i = 0; i <= iterations; i += 1) {
+    currentValue = arr[i];
+    arr[i] = newValue;
+    newValue = currentValue;
   }
   return arr.length;
 }
