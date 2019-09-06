@@ -72,12 +72,36 @@ This means the current running total is 48.
 - Game
   + Ten frames
   + Data Structure that holds frames
-  + Frames are numbered, so indexes are helpful
+  + Frames are numbered in sequence, so indexes are helpful
   + Array w/ ten frames (inner arrays)
-- Throw
+  + `#score`
+    * Iterte all frames
+      - If a frame at iteration is a strike
+        + Add next frame [0]
+        + Add next frame [1]
+          * If next frame [1] nil
+          * Add two frames from frame [0]
+      - If frame at iteration is a spare
+        + Add next frame [0]
+      - Else
+        + frame_total
+
+- Throw / roll
   + `#roll`
-    * Takes an integer representing the result of throwing a ball/ rolling
+    * Takes an integer representing the result of throwing/rolling a ball
+    1. Throw an error if 10 frames have already been played && not filling
+    2. Throw an error if the the pin rolled would be a mismatch for the frame
+    3. Add a new frame if necessary
+    4. Add the roll to the current frame
+
 - Frame
-  + Data Structure that can hold 2 or three throws
+  + `#add_new_frame`
+  + `play_current_frame?`
+  + Data Structure that can hold 2 or three throws/rolls (probably always 2)
     * Array
     * Ex, `[1, 2]`
+  + Fill ball
+    * Separate variable?
+  + Pins
+    * Pins are part of the frame
+    * `#pin_mismatch?`
