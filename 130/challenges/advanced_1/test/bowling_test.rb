@@ -89,7 +89,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_allow_fill_balls_when_the_final_frame_is_strike
-    #skip
+   # skip
     roll_n_times(18, 0)
     @game.roll(10)
     @game.roll(7)
@@ -181,7 +181,7 @@ class GameTest < Minitest::Test
   end
 
   def test_should_not_allow_rolls_after_the_tenth_frame
-    skip
+    # skip
     roll_n_times(20, 0)
     assert_raises(
       RuntimeError,

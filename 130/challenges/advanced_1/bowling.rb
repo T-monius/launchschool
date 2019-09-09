@@ -10,9 +10,9 @@ class Game
   end
 
   def roll(pins)
-    pin_validation(pins)
+    pin_value_validation(pins)
     validate_pins_on_lane(pins)
-    add_new_frame if !play_current_frame?
+    add_new_frame unless play_current_frame?
     current_frame << pins
   end
 
@@ -33,7 +33,7 @@ class Game
 
   private
 
-  def pin_validation(pins)
+  def pin_value_validation(pins)
     raise 'Pins must have a value from 0 to 10' unless (0..10).include?(pins)
   end
 
@@ -44,11 +44,18 @@ class Game
 
   def pin_mismatch?(pins)
     return false unless all_frames[-1][0]
+    # it final frame first strike and not final frame second strike
+    #   Make sure the last two pins don't add to more then 10
+    if all_frames.length == 10 && final_frame_first_strike? &&
+      !final_frame_second_strike? && current_frame.length == 2
+      binding.pry
+      return true if current_frame[1] + pins > 10
+    end
     (all_frames[-1][0] + pins) > 10
   end
 
-  def play_current_frame?
-    return true if fill_ball?
+  def play_current_frame? #(pins)
+    return true if fill_ball? # && !pin_mismatch?(pins)
     current_frame.length < 2 && current_frame[0] != 10
   end
 
@@ -81,18 +88,26 @@ class Game
   end
 
   def fill_ball?
-     final_frame_first_strike? || final_frame_second_strike? ||
+     roll_final_frame_first_strike? || roll_final_frame_second_strike? ||
                                   final_frame_spare?
   end
 
   def final_frame_first_strike?
-    all_frames.length == 10 && current_frame[0] == 10 &&
-                               current_frame.length == 1
+    all_frames.length == 10 && current_frame[0] == 10
   end
 
   def final_frame_second_strike?
-    all_frames.length == 10 && current_frame.length == 2 &&
-                               current_frame[0] + current_frame[1] == 20
+    all_frames.length == 10 && final_frame_first_strike? &&
+                               current_frame[1] == 10
+  end
+
+  def roll_final_frame_first_strike?
+    final_frame_first_strike? && current_frame.length == 1
+  end
+
+  def roll_final_frame_second_strike?
+    final_frame_second_strike? && current_frame.length == 2 &&
+                                  current_frame[1] == 10
   end
 
   def final_frame_spare?
@@ -108,7 +123,7 @@ class Game
   # end
 
   def final_frame_complete?
-    if final_frame_first_strike? || final_frame_second_strike? ||
+    if roll_final_frame_first_strike? || roll_final_frame_second_strike? ||
        final_frame_spare?
       current_frame.length == 3
     else
