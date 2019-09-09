@@ -1,8 +1,6 @@
-SELECT CASE customers.name WHEN previous THEN customers.name
+SELECT CASE customers.name WHEN lag(customers.name)
+            OVER (ORDER BY customers.name) AS previous THEN customers.name
        end,
-       lag(customers.name)
-         OVER (ORDER BY customers.name)
-         AS previous,
        services.description
 FROM customers
 LEFT OUTER JOIN contracted_services
