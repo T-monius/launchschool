@@ -1,14 +1,19 @@
 // array_comparison.js
 
-function areArraysEqual(left, right) {
+function areArraysEqual(primary, secondary) {
   var i;
+  var deleteIdx;
+  var copyOfSecondary = secondary.slice();
 
-  if (left.length !== right.length) {
+  if (primary.length !== secondary.length) {
     return false;
   }
 
-  for (i = 0; i < left.length; i += 1) {
-    if (left[i] !== right[i]) {
+  for (i = 0; i < primary.length; i += 1) {
+    if (copyOfSecondary.includes(primary[i])) {
+      deleteIdx = copyOfSecondary.indexOf(primary[i]);
+      copyOfSecondary.splice(deleteIdx, 1);
+    } else {
       return false;
     }
   }
