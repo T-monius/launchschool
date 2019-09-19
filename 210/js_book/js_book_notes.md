@@ -234,3 +234,334 @@
         + Thumbs down icon next to some property and method names
           * Identifies deprecated properties and methods
           * Avoid deprecated items
+        + New page for items
+    * Property Name
+      - Some datatypes have properties as well as operators
+      - Varb v. nown analogy
+      - Ex, String property `length`
+      - Access a property with a dot and the property name (`"Hello".length`)
+      - Example: Instance Methods v. Static Methods
+        + Takeaway
+          * You can apply instance methods to a value of the type that the constructor represents
+          ```js
+          'Hello, '.concat('Bob!');
+          ```
+          * Static method called w/ the constructor name
+          ```js
+          String.fromCharCode(97);
+          ```
+          - *Note*, `fromCharCode()` takes UTF-16 code points
+          - ASCII values you'll work with are teh same as the UTF-16 equivalents
+      - Searching for Documentation Online
+        + Precede your search term w/ "mdn"
+  - Exercises
+    ...
+    + 3 / 4. The REPL v. Browser v. `.js` file may provide different outputs
+      * A REPL generally has an output for every line of code
+      * The Chrome console does not run the code one line at a time when you paste a code snippet.
+    + 5
+      * `substring`, String/prototype
+      * `create`, Object/static
+      * `fromCharCode`, String/static
+      * `slice`, String/prototype, Array/prototype
+
+### The Basics
+#### Data Types
+- Core job of most programming languages: dealing with __data__
+- __Data Types__ represent different types of data
+- Help programmers and a program determine what to do w/ different types of data.
+- 5 JS *primitive data types*:
+  1. String
+  2. Number
+  3. Undefined
+  4. Null
+  5. Boolean
+  + *Note*: ES6 has Symbol and BigInt
+- String
+  + List of chars in a specific sequence
+  + Single or double quotes
+    * Suntactic components
+    * Not part of the value
+  + Double quote entire string or escape to use single quotes in a string
+  + Single quote the entire string or escape to use double quotes
+  + Escaping a quote character prevents JavaScript from seeing it as the end of your string
+  + Template literals
+    * backticks (` `)
+    * Enable an operation called *string interpolation*
+    ```js
+    `5 plus 5 equals ${5 + 5}`
+    //=> '5 plus 5 equals 10'
+    ```
+- Numbers
+  + One data type for real numbers
+  + Can't use commas or periouds for grouping
+- Booleans
+  + "On" or "off" state
+  ```js
+  let toggleOn = true;
+  //=> undefined
+
+  let sessionActive = false;
+  //=> undefined
+  ```
+  + Comparison operators evaluate to `true` or `false`
+- Undefined
+  + In programming, we need a way to express "nothing"
+  + `undefined`
+  + `console.log()` function returns `undefined`
+  + Declaring variables w/o an explicit value
+  ```js
+  let foo;
+  //=> undefined
+
+  let bar = 3;
+  //=> undefined
+
+  bar
+  //=> 3
+  ```
+- Null
+  + Similar to undefined
+  + empty or non-existent value
+  + Must use `null` explicitly to represent an empty value
+
+- The `typeOf` Operator
+  + Every value in a JS program has a data type
+    * See w/ `typeOf` operator *FC*
+    * Returns a string that contains the type of its operand value
+    * Name of a type and value are distinct
+      - `undefined` has one possible value: `undefined`
+    * `null`'s type is `'object'`
+      - Mistake in JavaScript itself
+      - Fixing it would break too many applications
+- Operations
+  + Elementary operations performed on primitive types
+  + Adding, Subtracting, and Multiplying numbers
+    * `+`, `-`, `*`
+  + Division and Remainder
+    * Divide integers or decimals w/ `/`
+    * Dividing two integers that don't result in a whole number, you get a decimal result
+    * `%` remainder operator
+      - Also works w/ decimals (though 'when would you?')
+  + Equality Comparison
+    * `===`, two identical values?
+    * `==` behaviour is odd in JS
+  + String Concatenation
+    * Look like arithmentic addition
+    * Joins strings
+    ```js
+    '1' + 2
+    //=> '12'
+    ```
+    * JS *coerces* `2` to a string if *either* operand is a string
+    * Result always a string w/ `+`
+    ```js
+    '5' - 3
+    //=> 2
+    ```
+  + NaN
+    * `0 / 0` returns `NaN`, "Not a Number"
+    * Special Value
+    * Illegal operation on numbers
+    * Numeric operation w/ non-numberic values
+    ```js
+    typeOf NaN
+    //=> 'number'
+    ```
+    * Numeric result that indicates an error occured
+    * 2 Main Situations:
+      1. Undefined mathematical operations
+        - *Undefined* in the math sense
+        - Not `undefined`
+      2. Trying to convert a non-number value to a number
+
+#### Explicit Coercion
+- Explicit type coercion
+  + You decide what kind of coercion you want
+  + V. implicit
+- Strings to Numbers
+  + `Number`
+  ```js
+  Number('1')
+  //=> 1
+  ```
+    * Takes a String as an argument
+    * Returns a number if it contains a numberic value
+    * Can perform arithmetic on the result
+    ```js
+    Number('foo')
+    //=> NaN
+    ```
+    * No error message;
+    * JS fails silently; programmer to determine whether an error represents a problem.
+  + `parseInt`
+    * Always returns a number when the first character of string is a digit
+    * Or, a sign (`+` or `-`) and digit
+    * `Infinity` or `-Infinity`, too big or small
+    * `parseFloat`
+- Numbers to Stings
+  + `String`
+
+#### Data Structures
+- Arrays
+  + Ordered Lists
+  + Array literals - representations of an array
+    * Brackets
+    * Comma delimited value list (elements)
+  + Square brackets to access
+    * Indexes are non-negative integers
+    ```js
+    [1, 2, 3, 4, 5][0]
+    //=> 1
+    ```
+  + 3 Important facts: *FC*
+    1. Order of elements is significant
+    2. Index numbers for retrieval
+    3. Index numbers are non-negative from `0`
+- Objects
+  + Many uses
+  + One feature, dictionary-like structure
+    * Matches keys w/ specific values
+    * Other names in other languages
+    * Collectgion of key-value pairs
+  + Object literal
+    * Zero or more key-value paris comma separated in curly braces
+    * Key, string
+    * Value, any type
+    * Key followed by a colon (`:`) then the value
+    * No specific order
+    * Retrieve with `[]`
+      - Enclose object in parentheses
+      ```js
+      ({ dog: 'barks', cat: 'meows', pig: 'oinks' })['cat']
+      //=> 'meows'
+      ```
+  + Expressions and Return Values
+    * _Expressions_ typed at the `>` prompt
+      - Anything JS can evaluate to a value
+      - Don't have to contain operators
+        + Any value is an expression that evaluates to itself
+  + Statements
+    ```js
+    let foo
+    //=> undefined
+    ```
+    * Command for the JavaScript engine
+    * ^ Didn't set `foo`to a specific value
+    * Statements always evaluate as `undefined`
+    * Cannot use a statement as part of another expression
+  + Printing (logging) v. returning values
+    * `console.log` tells JS to write a value to the console
+    * In JS _log_ is a synonym for printing or displaying on the console
+    * Expressions do something
+      - Also, they return or evaluate to a value
+      - Returned value may not always be what you expect
+      ```js
+      let a = console.log("Howdy")
+      //=> a
+      ```
+      - Value of `a`is `undefined`
+- Exercises
+  + ...
+  2. Don't use `let` when re-assigning an existing variable
+  + ...
+  6. `parseInt` takes a second argument (a radix); doesn't detault to `10`
+  + ...
+  9. When comparing two strings, JS performs a character.by_character comparison left to right.
+
+### Variables
+#### Variables store info
+- Label data
+- Descriptive names
+
+#### Variable Names
+- Among the most difficult tasks of a developer
+
+#### Declaring and Assigning Variables
+- Variable declaration = statement asking JS engine to reserve space for variable w/ name.
+  + Many ways
+  + Preferred
+  ```js
+  let firstName;
+  //=> undefined
+  ```
+  + `=` operator to assign a more useful value
+  + _Variable initialization_ = assign a value to a variable for the first time
+  + Can re-assign variables anywhere in the program it's accessible *FC*
+  + Can *declare* an *initialize* on one line
+    * Return value of assignment is the value assigned
+    * Return value of a declaration is `undefined` *FC*
+    ```js
+    let a = 4;
+    //=> undefined
+
+    let b = a;
+    //=> undefined
+
+    a = 7;
+    //=> 7
+
+    b
+    ```
+    * `b` is now `4`
+    * Variables reference values in memory that aren't deeply linked to each other *FC*
+    * Not always the case...
+      - More to come
+
+#### Declaring Constants
+- `const`, lets you declare __constant__ identifiers
+- Can't reassign a constant *FC*
+- All caps, underscore-separaed
+
+#### Variable Scope
+- Variable's scope determines where it's available
+- Location of declaration determines
+- In JS, declaring w/ `const`or `let` creates a __block__ scope
+  + Block, related to statements and expressions
+    * Between opening and closing curly braces
+    ```js
+    if (expression) { // Block starts at
+      doSomething();  // Block body
+    }                 // Block ends here
+    ```
+    * JavaScript evaluates the expression between the parentheses
+    ```js
+    if (1 === 1) {
+      let a = 'foo';
+    }
+
+    console.log(a);  // ReferenceError: a is not defined
+    ```
+    * `a` is not in scope on line 5
+    ```js
+    let a = 'foo';
+    if (1 === 1) {
+      a = 'bar';
+    }
+
+    console.log(a). //=> 'bar'
+    ```
+    * Declaring outside the block makes `a` accessible at the outer scope (`main`?)
+    * `const` declared variables have the same scope as those declared w/ `let`
+    * `var` doesn't use block-scoping; more to come.
+
+#### A Common Gotcha
+- JS is forgiving
+- Can assign an undeclared variable on the fly
+  + Bisarre Rules w/ undeclared variables __STAR__
+    - Globally scoped
+- Exercises
+  + ...
+  4. Reassigning a constant, in this exercise, throws an error, but the program continues to execute. The original value of the constant is later printed.
+  5. code below
+  ```js
+  let foo = 'bar';
+  {
+    let foo = 'qux';
+  }
+
+  console.log(foo);  //=> bar 
+  ```
+  - A new inner scoped variable is created on line 3 (shadowing?)
+
+### Input/Output
