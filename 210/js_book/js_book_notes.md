@@ -1,4 +1,5 @@
-## Introduction to Programming with JavaScript
+
+0## Introduction to Programming with JavaScript
 
 ### A Brief JavaScript History
 - Created at Netscape Communications
@@ -562,6 +563,201 @@
 
   console.log(foo);  //=> bar 
   ```
-  - A new inner scoped variable is created on line 3 (shadowing?)
+  + A new inner scoped variable is created on line 3 (shadowing?)
 
 ### Input/Output
+#### Computer needs to take an input
+- Perform actions on the input
+- Provide an output
+- Various input sources
+  + Mice
+  + Keyboards
+  + Disks
+  + Network
+  + Environmental sensors
+  + etc.
+- Various Outputs
+  + Screen
+  + Log
+  + Network
+  + etc.
+- Can obtain input from another computer's output
+
+#### Command Line Output
+- `console.log()`
+  + Takes any value
+  + Logs it to the console.
+  + Works in `node` and most browsers
+- Other methods as well
+
+#### Command Line output
+- In previous example, __hard-coded__ the name in the variable
+  + The program will always use the same name
+- API __readline__ lets JS programs read input from the terminal
+  + Not straight-forward
+  + Not simple
+  + `readline-sync`
+   * Simpler
+   * Intall: `npm install readline-sync` **STAR**
+   * Installs package in `node-modules` subdirectory of current directory
+    - Node.js programs in the current directory can `require`
+- Example: Greet the User By Name
+  + Program `personalized-greeting.js`
+    * Use Node's built in `require` function on line 2
+      - Imports `readline-sync`
+      - Assign the library object returned on line 2 to a variable `rlSync`
+      - Call `question` from `rlSync` on line 3
+- Example: Add Two Numbers Together
+  + `sum_numbers.js`
+    * `question` returns a string
+    * Coerce to numbers
+  + I/O (Input/Output) in Node is a complex topic
+- Input in the Browser
+  + Browser environment radically different than Node.js
+  + Working w/ 'browser controls' requires DOM knowledge
+  + Most browsers implement `prompt`
+    * `personalized_greeting_browser.html`
+
+#### Summary
+  + Software that takes no input and provides no output is useless **FC**
+
+### Functions
+- Run code multiple times w/o re-writing it
+  + Procedures let you extract code and run it in a separate unit **FC**
+  + **Functions** in JS
+
+#### Using Functions
+- Define a function w/ keyword `function`
+  + Name followed by parentheses (`()`)
+  + The code associated surrounded by curly braces (`{}`)
+  ```js
+  function say() {
+    console.log('Hi!');
+  }
+  ```
+  + Extract logic in a way that makes a program more flexible
+    * Make changes in one place
+- Call functions by typing their name
+  + Provide some optional values (e.g. **arguments**)
+  + Supply (**pass**) an argument
+  + Use meaningful, explicit argument names
+    * Follow variable naming conventions
+    * Many programmers conflate the terms "parameter" and "argument"
+- Return Values
+  + **Return** a result w/ the `return` statement **FC**
+  + All JavaScript function calls evaluate to a value
+    * Default `undefined`
+    * Return a specific value w/ `return`
+  + **Caller** = the code that calls the function
+  + W/o a value passed, `return` stops the function and returns control to the caller **STAR**
+- Default Parameters
+  ```js
+  function say(words = 'Hello') {
+    console.log(words + '!')
+  }
+  ```
+  + Call `say` w/o an argument
+- Variable Scope
+  + 2 JavaScript variable based on accessibility:
+    1. Global, available throughout
+    2. Local, confined to a function
+  + Global Variables
+    * Read and assign at any time
+    * Often lead to bugs
+  + Local Variables
+    * Can't access outside the function that declares them
+    * Parameters have local scope withing a function
+    * Short-lived
+      - Disappear when the function stops running
+    * Also, scope cariables locally w/ a block
+- Functions v. Methods
+  + So far, `functionName(obj)` syntax
+  + Method invocation occurs when you prepend a variable name or value followed by a period (`.`) to a function invocation
+
+#### Mutating the Caller
+- Permanently alter the object calling the method
+- Non-mutating methods often return a new value or object but leave the caller unchanged
+- Ex, `pop()`
+- Some functions mutate their arguments too
+```js
+function changeFirstElement(array) {
+  array[0] = 9;
+}
+
+let oneToFive = [1, 2, 3, 4, 5];
+changeFirstElement(oneToFive)
+console.log(oneToFive);        // logs [9, 2, 3, 4, 5]
+```
+  + `[index]` syntax changes the first element
+  + `concat` wouldn't
+- Mutation is a concern w/ arrays and objects but not w/ primitive values
+  + Primitive values are __immutable__ **FC**
+    * Operations on an immutable value always return a new value
+  + Operations on __mutable__ values may or may not mutate date or return a new value
+- JS is both pass-by-reference and pass-by-value
+  + Pass-by-value w/ primitives
+  + Pass-by-reference w/ objects and arrays
+
+#### Function Composition
+- JS lets you use a function call as an argument to another function, *function composition*
+
+#### Three Ways to Define a Function
+```js
+function functionName(...arguments) {
+  // function body
+}
+```
+- ^ __function declaration__ *STAR*
+- Notably, can call the function before you declare it.
+- __Function expression__
+```js
+let greetPeople = function() {
+  console.log('Good Morning!');
+}
+
+greetPeople();
+```
+  + Saving to a variable
+  + Cannot call the function before it appears in the program
+  + JavaScript functions are first-class functions
+    * You can treat them as any other value
+    * Assign them to variables
+    * Return them as a function call
+- Arrow function
+```js
+let greetPeople = () => console.log('Good Morning');
+greetPeople();
+```
+  + Similar to a function expression w/ a different syntax
+  + Features useful for OOP
+  + Implicit returns
+  ```js
+  let add = (a, b) => a + b
+  ```
+  + Notice: no `return` statement
+  + Can omit in arrow functions *when the function body contains one expression*
+  + 2 or more expressions or statements:
+  ```js
+  // Run this code in your browser
+
+  let add = (a, b) => a + b
+  let getNumber = text => {
+    let input = prompt(text);
+    return Number(input);
+  };
+
+  let number1 = getNumber('Enter a number: ');
+  let numebr2 = getNumber('Enter another number: ');
+  console.log(add(nuumber1, numebr2));
+  ```
+
+### Flow Control
+- A program is a journey for date
+  + Paths it can take
+  + Flow control
+    * How?
+    * Conditionals
+
+#### Conditionals
+- Fork in the road
+- Simplest, `if` statements combined with comparison and logical operators
