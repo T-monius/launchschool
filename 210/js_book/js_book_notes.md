@@ -761,3 +761,141 @@ greetPeople();
 #### Conditionals
 - Fork in the road
 - Simplest, `if` statements combined with comparison and logical operators
+- Keywords
+  + `if`
+  + `else`
+  ```js
+  // condistionals.js
+  // Run in browser
+
+  lat a = prompt('Entat a number');
+
+  if (a === "3") {
+    console.log("a is 3");
+  } else if (a === "4") {
+    console.log("a is 4");
+  } else {
+    console.log("a is neither 3 nor 4");
+  }
+  ```
+  + Control the program's flow with `if` statements
+  + `prompt` returns a string value
+  + __Clause__ = a block, statement, or expression in this context
+  + `else` clause is not a separate statement
+    * Part of the `if` statement
+  + Don't need a block if the `if` statement is a single expression or statement *STAR*
+  + Avoid this in most cases
+  + `else if` is the one place where omitting the block is preferable
+
+#### Comparisons
+- Comparison operators return a boolean value
+  + Expressions or values an operator uses are its __operands__
+  + `<`, `>`, `<=`, `>=`
+  + `===`, __strict equality operator__
+    * Identiy operator
+    * `true` when the operands have the same type and value
+  + `!==` strict inequality operator
+  + `==`, __non-strict equality operator__
+    * Loose equality operator
+    * When operands have different types, one operand is coerced into the type of the other
+    * Coercion behavior can lead to unexpected results
+    ```js
+    5 == '5'
+    //=> true
+    ```
+  + `!=`, __non-strict inequality operator__
+    * Loose inequality operator
+  + Rules for non-strict conversion are complex
+    * Difficult to remember
+    * Avoid these operators
+
+#### Logical Operators
+- Ability to combine conditions
+- `&&`
+  + The __and operator__ returns `true` when both operands are true
+  + `false` when both operands are false
+  ```js
+  (4 === 4) && (5 === 5)
+  //=> true
+  (4 === 4) && (5 === 6)
+  //=> false
+  ```
+- `||`
+  + The __or operator__ returns `true` when either operand is `true` and `false` when both are `false`
+  ```js
+  (4 === 4) || (5 === 6)
+  //=> true
+  (4 === 5) || (5 === 6)
+  //=> false
+  ```
+- `!`
+  + The __not operator__ returns `true` when its operand is `false`; `false` when operand is `true`
+  + Negates the operand
+  + Takes a single operand
+  + JS applies `!` after evaluating the expression to the right
+  + `!!` is simpley two consecutive `!` operators *STAR*
+    * Coerce non-booleans into booleans
+- Short Circuits
+  + `&&` and `||` use __short circuit evaluation__
+- Truthiness
+  + `if` statement has an expression that evaluates as true or false
+    * Expression doesn't have to be boolean
+    * JS can coerce any value to a boolean
+      - `5` coerced to `true`
+      - `0` coerced to `false`
+      - Expression __evaluates as__ or __evaluates to__ `true` or `false`
+      - False values:
+        + `false`
+        + The number `0`
+        + `undefined`
+        + `null`
+        + `NaN`
+      - Most languages __don't__ share the same idea of what values are falsy
+  + Avoid using assignments in conditionals *FC*
+    * The assignment may be intentional
+    * May be a mistake
+      - Bug waiting to bite the unwary
+    * Another programmer may come along and naively "fix" the code
+  + When using `&&` and `||`, the return value is always the value of the operand evaluated last
+  + Operator Precedence
+    * _Precedence_
+      1. `<=`, `<`, `>`, `>=` (Comparison)
+      2. `==`, `!=`           (Equality)
+      3. `&&`                 (Logical AND)
+      4. `||`                 (Logical OR)
+    ```js
+    if (x || y && z) {
+      // do something
+    }
+    ```
+    * `y && z` is evaluated first
+    * Then, `x || result`
+    * Can use `()` parentheses to override the precedence
+    ```js
+    if ((x || y) && z) {
+      // do something
+    }
+    ```
+    * `x || y` gets evaluated first
+    * Then `result && z`
+    * Strive to use parentheses when there are 2 or more operators
+    * Short-circuiting doesn't change precedence
+
+#### The Ternary Operator
+- Quick, concise `if/else` statement
+- `?` and `:`
+- Three operands
+- The entire structure is an expression
+  + `if/else` is a statement, so it doesn't have a return value
+  + Can treat a ternary as a value
+  ```js
+  let message = true ? 'this is true' : 'this is not true'
+  //=> undefined
+  ```
+
+#### Switch Statement
+- Similar to an `if` statement
+  + Different interface
+  + Compare a single value to multiple
+    * Strict equality
+    * `if` compares multiple expressions w/ any condition
