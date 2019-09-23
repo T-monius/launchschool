@@ -1,7 +1,7 @@
 // invoice.js
 
 function invoiceTotal() {
-  var total;
+  var total = 0;
 
   for (var i = 0; i < arguments.length; i += 1) {
     total += arguments[i];
