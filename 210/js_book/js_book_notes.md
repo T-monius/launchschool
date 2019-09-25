@@ -899,3 +899,55 @@ greetPeople();
   + Compare a single value to multiple
     * Strict equality
     * `if` compares multiple expressions w/ any condition
+  + Reserved words: `switch`, `case`, `default`, and `break`
+    * `switch.js`
+    * `break` in each `case` is crucial
+      - Execution will 'fall through' otherwise
+      ```js
+      let a = 5;
+
+      switch (a) {
+      case 5:
+        console.log('a is 5');
+      case 6:
+        console.log('a is 6');
+      default:
+        console.log('a is neither 5 nor 6');
+      }
+
+      // It logs:
+      //=> a is 5
+      //=> a is 6
+      //=> a is neither 5 nor 6
+      ```
+      - This ouput is *almost* never desirable
+      - Example of a case where "fall through" works
+        + Executing the same action for 2 or more cases
+- `case` statements are potent tools in JavaScript
+
+#### Loops and Iterators
+- Code to run over and over
+- Looping keyword, a condition, a block
+  + Loop executes the body as long as the condition remains truthy
+  + __One iteration__, executing the block once.
+- Array abstractions
+- Recursion
+
+#### While Loops
+- `while` keyword
+  + Followed by a conditional in parentheses
+  + Then a block
+  + Block executed while the condition is truthy
+  + W/o a means of making the condition falsy, there would be an __infinite loop__
+  ```js
+  // counter.js
+  let counter = 1;
+  while (conter <= 10) {
+    console.log(counter);
+    counter = counter + 1;
+  }
+  ```
+  + JavaScript encounters the `while` keyword and evaluates the conditional expression in the parentheses.
+    * Line 5 is crucial
+    * The block _must_ modify the counter in some way.
+  + Can stop an infinite loop in Chrome with the task manager.
