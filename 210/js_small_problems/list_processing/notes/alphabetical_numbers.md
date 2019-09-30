@@ -30,12 +30,12 @@
 - Set a variable to the mapped integers to their English terms
 - Sort the array of english terms
 - Return the sorted terms mapped back to their digit integer form
-  + Write a function to invert a hash
+  + Write a function to invert a object
   + Invert our dictionary and set to a variable
   + Map the terms array to the numbers and Return
 
 #### Alternatively Implementation
-- Use an array instead of a hash since the indexes map to numbers anyway. No need to invert hash.
+- Use an array instead of a object since the indexes map to numbers anyway. No need to invert an object.
 - Reference array
 - Map the input
   + Set a variable to store accessing the reference for each value at index
@@ -43,3 +43,12 @@
 - Map the terms array
   + Find index of the term in the reference array
   + Return
+
+### Further Exploration
+- The `Array.prototype.sort` method can also take a function expression as an argument. If you didn't use one the first time, try refactoring the solution using a function expression.
+
+#### Understanding Further Exploration
+- A function expression would be a function that is explicitly assigned to a variable.
+  + I can us LS's solution
+  + Refactor to use a function expression instead of a function declaration
+  + I could also pass an arrow function as a further alternative
