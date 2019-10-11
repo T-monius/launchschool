@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mail Count</title>
+    <meta charset="utf-8" />
+    <script src="http://dbdwvr6p7sskw.cloudfront.net/210/files/email_data_v2.js"></script>
+    <script>
+      var emailsToDates = function emailsToDates(email) {
+        return new Date(email.split(/#\/#/)[2].match(/\d\d\-\d\d-\d\d\d\d/)[0]);
+      };
+
+      var minMax = function minMax(dateList) {
+        var min;
+        var max;
+
+        min = dateList.reduce( function(previousDate, currentDate) {
+          return previousDate < currentDate ? previousDate : currentDate;
+        });
+
+        max = dateList.reduce( function(previousDate, currentDate) {
+          return previousDate > currentDate ? previousDate : currentDate;
+        })
+
+        return { min: String(min).slice(0,15), max: String(max).slice(0, 15) }
+      };
+
+      var dateRange = function dateRange(emails) {
+        var allMailDates = emails.map(emailsToDates);
+        return minMax(allMailDates);
+      }
+
+      var mailCount = function mailCount(emailData) {
+        var emailList = emailData.split(/##\|\|##/);
+        var emailCount = emailList.length;
+        var rangeOfDates = dateRange(emailList);
+        console.log(`Count of Email: ${emailCount}`);
+        console.log(`Date Range: ${rangeOfDates.min} - ${rangeOfDates.max}`);
+      }
+
+      mailCount(emailData);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
