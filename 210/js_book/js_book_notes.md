@@ -1,5 +1,4 @@
-
-0## Introduction to Programming with JavaScript
+## Introduction to Programming with JavaScript
 
 ### A Brief JavaScript History
 - Created at Netscape Communications
@@ -951,3 +950,575 @@ greetPeople();
     * Line 5 is crucial
     * The block _must_ modify the counter in some way.
   + Can stop an infinite loop in Chrome with the task manager.
+  + `counter += 1`
+    * Increment
+    * Re-assign that incrementation
+    * Common in programming languages
+    * Wordes w/ other arithmentic operators
+  + `counter ++;`
+    * Also increments by `1`
+    * corresponding decrement operator `--`
+    * *Note* A growing number of developers discourage the use of the increment and decrement operators for common typos.
+- Looping Over Arrays With While
+  + Common to **iterate** over the elements of an array
+    * Perform some action on each element
+    * Sequential
+  + Arrays are fundamental structures in programming
+    * ex. `names.js`
+- do/while loop
+  + `do/while` always executes the code in the block at least once
+    * Conditional check occurs at the end of the loop
+  ```js
+  let answer;
+  do {
+    answer = prompt('Do you want to do that again?');
+  } while (answer === 'y');
+  ```
+
+#### for loops
+  + Same purpose as while loops
+  + Condesed syntax that words well with arrays and other sequences
+    * Variable initialization
+    * loop condition
+    * Variable increment/decrement expression
+    * *one line*
+    ```js
+    for (initialization; condition; increment/decrement) {
+      // loop body
+    }
+    ```
+    * Similar to:
+    ```js
+    initialization;
+    while (condition) {
+      // loop body
+      increment;
+    }
+    ```
+    * Scope is the sole difference
+      - Variables like `index` declared outside a `while`
+      - Variables like `index` declared in the `for` parentheses
+
+#### Controlling Loops
+- `continue` and `break`
+  + Start a new iteration
+  + Terminate the loop
+- Can re-write a loop containing a `continue` w/ a negated `if` conditional
+- Avoid nested conditional logic w/ `continue`
+- Exception to *always* using a block w/ an `if` statement is w/ `continue`, `break`, or `return`
+```js
+if (!someCondition) continue;
+```
+- `break`
+  + Skip all remaining iterations
+    * Searching for example
+    * `search.js`
+    * Initialized `indexOfFile` to `-1`: use this value when the array doesn't have the desired value.
+
+#### Array Iteration
+- Iteration of arrays is possible w/o looping syntax
+- Arrays, ordered lists
+- `forEach`
+  ```js
+  array.forEach( function (parameter) { 
+    /// ...
+  });
+  ```
+  + Pass a function definition as an argument?
+  + The function definition is a function expression
+    * This one is nameless
+    * *anonymous function*
+    * We pass the function to `forEach` since JS fucntions are first class functions.
+  + When you pass a function as an argument to another function, that function can call the function represented by the argument
+  ```js
+  array.forEach( x => console.log(x));
+  ```
+  + Most JS devs prefer **array looping abstractions**
+
+#### Recursion
+- Functions that call themselves
+- In JS, wa say recursion is another way to create loops
+- A Simple Example
+```js
+function doubler(number) {
+  console.log(number * 2);
+
+  if (number <= 50) {
+    doubler(number * 2);
+  }
+}
+
+doubler(5)        // 5, 10, 20, 40, 80
+```
+- A Complex Example
+  + Fibonacci Sequence
+  ```js
+  // fibonacci.js
+
+  function fibonacci(number) {
+    if (number < 2) {
+      return number;
+    } else {
+      return fibonacci(number - 1) + fibonacci(number + 1);
+    }
+  }
+  ```
+  + Every recursive function has a **baseline condition**
+    * Marks the end of the recursion
+  + Also, always some code that recursively calls the function with a new argument
+  + Most cases, baseline condition returns a concrete value
+    * Value reused in the recursive calls
+    * "Unwinds"
+    * Each unwind uses the previous return value
+
+### Arrays
+- What is an Array?
+  + An ordered list of elements
+  + Each element has a value of any type
+  + Define, list of values between brackets (`[]`)
+  ```js
+  let myArray = [ 2, 'Pete', 2.99, 'another string']
+  ```
+  + Arrays are **heterogeneous**: can contain differing data types **FC**
+    * Even objects
+    * Even other arrays
+  + Unique index number
+    * Each element
+    * Gives position in array
+    * __Indexed lists__
+- Reference
+  + By index
+  + Index number between brackets after array name or value
+  ```js
+  myArray[0]
+  //=> 2
+  ```
+  + Zero indexed
+  + Access last element of an array w/ unknown length
+  ```js
+  myArray[myArray.length - 1]
+  //=> 'another string'
+  ```
+
+#### Modifying Arrays
+- Replacing and Adding Elements with `[]`
+  + Replace an elment w/ brackets and the assignment operator
+  + Add new elements
+  ```js
+  array[array.length] = 10
+  //=> 10
+
+  array
+  //=> [1, 4, 3, 10]
+  ```
+- Adding Elements with `push`
+  + `push` adds one or more elments to the end of the array
+  + Append elements to the caller: mutates the caller
+  + Returns the array's new length *NOTE*
+    * Check docs about return if you have doubts
+- Adding Elements with `concat`
+  + Similar to `push`; doesn't mutate the caller
+  + Returns new array w/ new elements
+  + *Note* Use a method and examine the results to determine mutation
+- Removing Elements with `pop`
+  + Inverse of `push`
+  ```js
+  array.pop()
+  //=> 'xyz'
+
+  array
+  //=> [1, 4, 3, 10, 'a', null]
+  ```
+  + `pop` mutates the caller
+- Removing Elements with `splice`
+  + Remove one or more elements
+  + Per position
+  ```js
+  array.splice(3, 2)
+  [10, 2]
+
+  array
+  //=> [1, 4, 3, null]
+  ```
+  + Delete starting at index `3` two elements
+  + To come: adding and inserting w/ `splice`
+- Iterating with `forEach`
+  + Style guides often recommend over `for`
+  + Need a __callback__ function
+    * Called function invokes callback while it runs
+  + Function expression or arrow function
+- Transforming Arrays with `map`
+  + Create a new array w/ values from original
+  + Using `forEach` and performing a __side effect__
+    * Side effects can be troublesome
+    * Example...
+  + `map`
+    * Elements of new array are dependant on return value of the callback
+- Filtering Arrays with `filter`
+  + Return a new array w/ elements from callback where truthy
+  + _Selected_ elements
+  + Doesn't mutate the caller
+
+#### Arrays Can Be Odd
+- JavaScript has surprisingly odd properties
+  + `0` based indices (only odd for newbies)
+  + `length` property returns a value one greater then the greatest index (also not surprising)
+  + Expanding `length` property initializes new elements as `undefined` *WATCHOUT*
+  + Create "elements" w/ negative or non-integer values:
+  ```js
+  arr = [1, 2, 3]
+  //=> [1, 2, 3]
+
+  arr[-3] = 4
+  //=> 4
+
+  arr
+  //=> [1, 2, 3, '-3': 4]
+
+  arr[3.1415] = 'pi'
+
+  arr
+  //=> [1, 2, 3, '-3': 4, '3.14.15': 'pi']
+
+  arr.cat = 'Fluffy'
+  //=> [1, 2, 3, '-3': 4, '3.1415': 'pi', cat: 'Fluffy']
+  ```
+      * Not true elements
+      * Properties on the array object
+      * Not in array length
+
+#### Nested Arrays
+#### Array Equality
+```js
+[1, 2, 3] === [1, 2, 3]
+//=> false
+```
+- while
+  ```js
+  let a = [1, 2, 3]
+  let b = a
+  a === b
+  //=> true
+  ```
+  + Comparison of object in memory
+    * True for JS objects in general
+    * Not the same w/ primitive values
+  + Could create a function to compare by value
+  ```js
+  // arrayEquality.js
+  ```
+    * Saved
+    * Only works when elemnts are primitive values
+
+#### Common Array Methods
+- `includes`
+  + Uses `===` internally
+  + Can't use `includes` to check for the existence of a nested array on an object *FC*
+  ```js
+  let a = [1, 2, [3, 4], 5]
+  a.includes([3, 4])
+  //=> false
+  ```
+- `sort`
+  + Sequential organization
+- `slice`
+  + Extract and return a position
+  + 2 optional arguments
+    * index to begin extraction
+    * 2nd endpoint exclusive (otherwise rest of array)
+  + Returns a copy with no arguments *WATCHOUT*
+- `reverse`
+  + Destructive
+  + `slice` first to avoid destruction
+
+#### Exercises
+  1. ...
+  5. If the callback just calls another function, we can pass jsut that function call instead of an arrow function or function expression
+
+### Objects
+- OOP paradigm around modeling problems as __objects__ w/ __behavior__ and __state__
+- What are Objects?
+  + Store a collection of __key-value pairs__
+  + Object literal syntax:
+  ```js
+  let person = {
+    name: 'Jane',
+    age: 37,
+    hobbies: ['photography', 'genealogy']
+  };
+  ```
+  + Single line possible
+  + Comma after last pair optional
+  + Key quotes omitted when all alphanumeric and underscores
+  + Access
+  ```js
+  person.name      // dot notation
+  //=> 'Jane'
+
+  person[age]     // bracket notation
+  //=> 27
+  ```
+    * A variable w/ a key name must be in brackets
+    ```js
+    let key = 'name'
+    person[key]
+    ```
+    * Can insert w/ dot notation an bracket
+  + Delete
+    * `delete` keyword
+    ```js
+    delete person.age
+    //=> true
+
+    delete person['gender']
+    //=> true
+    ```
+  + *Note* key-value pairs also called properties in JS
+    * 'Property' can refer to the key name
+    * Meaning generally clear from the context
+
+#### Objects v. Primitives
+  + JS  has two data types
+    1. Primitives
+    2. Objects
+  + Objects include:
+    * Simple objects
+    * Arrays
+    * Date objects
+    * Functions
+    * etc...
+- Simple Objects
+  + Structures that contain multiple named values *FC*
+  + Objects are complex values composed of primitive values or other objects
+  + Objects are mutable
+    * All operations on a primitive value evaluate to a new value
+    * `0 + 0` returns a new value `0` *WATCHOUT*
+- Prototypes
+  + JS objects can *inherit* from other objects
+    + If `a` inherits from `b`; then, `b` is the prototype of `a`.
+    + `a` has access to `a`'s properties
+    + Prototypes implement inheritance in JS
+    + Static method `Object.create` provides a way to create a cnew object inheriting from another
+    ```js
+    let bob = { name: 'Bob', age: 22 };
+    let studentBob = Object.create(bob);
+    studentBob.year = 'Senior';
+
+    console.log(studentBob.name);       // logs 'Bob'
+    ```
+      * `bob`, parent
+      * `studentBob`, child
+
+#### Iteration
+- The `for/in` loop
+  + Easier syntax than `for` w/ no initializer, ending condition, or increment clause
+  + Iterate all keys in the object
+    * Access key at iteration through a variable
+    ```js
+    let person = {
+      name: 'Bob',
+      age: 30,
+      height: '6 ft',
+    };
+
+    for (let prop in person) {
+      console.log(person[prop]);
+    }
+
+    //=> Bob
+    //=> 30
+    //=> 6 ft
+    ```
+      * Use bracket notation since `prop` is a variable
+    + Iterates over the properties of an object's prototypes as well *FC*
+      * Understandable when wanting obly object's properties
+      * `hasOwnProperty`
+      ```js
+      let obj1 = { a: 1, b: 2 };
+      let obj2 = Object.create(obj1);
+      obj2.c = 3;
+      obj2.d = 4;
+
+      for (let prop in obj2) {
+        if (obj2.hasOwnProperty(prop)) {
+          console.log(obj2[prop])
+        }
+      }
+
+      // 3
+      // 4
+      ```
+- Object.keys
+  + Returns object's keys as an array
+  + Iterate keys w/ array iteration techniques
+  + Returns only object's key and not prototype's keys
+- Order of Object Properties
+  + No order specified in JS standard
+
+#### Common Operations
+  + No abundance of methods
+  + `Object.values`
+  + `Object.entries`
+    * Returns an array of nested arrays
+  + `Object.assign`
+    * Combine objects
+    * Mutates the first object
+
+#### Objects v. Arrays
+- ...
+- Arrays are good for *stack* or *queue* structures
+
+#### Exercises
+1. ...
+2. JS coerces non-string keys to strings
+...
+7. I struggles trying t ocall `Object.keys` as an isntance method for some time.
+8. Powerful example on immutability of strings v. primitives.
+
+### More Stuff
+- Variables as Pointers
+  + Pointer and References are interchangable in LS
+    * Variable points to or references a value in memory
+    * No distinction in JS *FC*
+- Working with Primitive Values
+  ```js
+  let b = a;
+  a = 8;
+  a
+  //=> 8
+  b
+  //=> 5
+  ```
+  + `a` and `b` are independant
+    * Changing one doesn't affect the other
+    * Variable w/ primitive values store them in the variable
+    * Changing / re-assigning changes the variables content
+    * Change doesn't affect other variables
+- Working with Objects and Mutating Operations
+  ```js
+  let c = [1, 2];
+  c = [3, 4];
+  c
+  //=> [3, 4]
+  d
+  //=> [1, 2]
+  ```
+  + Re-assignment doesn't change the variable to the left or the operator
+  ```js
+  let e = [1, 2];
+  let f = e;
+  e.push(3, 4);
+  e;
+  //=> [1, 2, 3, 4]
+  f;
+  //=> [1, 2, 3, 4]
+  ```
+  + With objects and arrays, the values get stored in a region of memory called the __heap__ *FC*
+    * The variable gets set to a value that references the real value
+    * Some devs call `e` and `f` referencing the same value aliasing
+    * Cannot alias primitive values
+- Gotcha
+  + You may think re-assignment never mutates
+  ```js
+  let g = ['a', 'b', 'c'];
+  let h = g;
+  g[1] - 'x';
+  g;
+  //=> ['a', 'x', 'c']
+  h;
+  //=> ['a', 'x', 'c']
+  ```
+  + Reassigning a specific element in the array
+  + Element not mutated but the array is
+- Takeaway
+
+#### Method Chaining
+- Can call a method on the return value of another
+
+#### Regex
+- Test a string for matching a given pattern
+- JS uses RegEx objects to store regex
+  + RegEx objects can invoke methods
+  + `test` method, returns boolean
+  ```js
+  /o/.test('bobcat');
+  //=> true
+  /1/.test('bobcat');
+  //=> false
+  ```
+  + Boolean sometimes not enough info
+    * `match` method
+    * Returns an array that describes the match
+    * When a match occurs w/ a regex containing the `/g` flag - global match - it returns an array that contains each matching substring
+    * w/o `/g`, an array w/ additional info is returned
+      - `index`
+      - `input`
+      - `groups`
+    * `null` when no match
+  + `test` is more efficient than `match`
+
+#### The Math Object
+- Most programs need little more than basic arithmetic
+- `Math` object can perform complex math for you
+  ```js
+  Math.sqrt(36);
+  // 6
+  Math.sqrt(2);
+  // 1.4142135623730951
+
+  Math.PI
+  // 3.141592653589793
+  ```
+
+#### Dates
+- `Date` creates objects that represent a time and date
+  + Objects provide methods to work w/ those values
+  ```js
+  let date = new Date('December 25, 2012')
+  date.getDay()
+  // 2
+  ```
+    * `getDay` returns a number for the day of the week: `0` for Sunday
+    * Example function to get the day of the week
+    * `toLocalDateString` also words but is awkward
+
+#### Exceptions
+- JS is forgiving and doesn't issue error messages when other languages do.
+  + Fails silently
+  + Issues `NaN`, `undefined`, `null`, or even `-1`
+- Exceptoins happen when JS isn't forgiving and raises an error / throws an exception not catching the exception
+- Exception handling
+  + `try`, and `catch` (sometimes `finally`)
+  ```js
+  try {
+    // operation that may produce an error
+  } catch {
+    // error occurred, do something
+    // example, log the error
+  } finally {
+    // optional 'finally' block; not used often
+    // Executes even if an error occurs
+  }
+  ```
+  + Read about `finally` on MDN
+  + Most often you want to focus on one or two statements in the `try` block
+
+#### Stack Traces
+- If your program uses libraries like Handlebars and jQuery, the stack trace may contain hundreds of lines
+  + Generally, you can limit your attention to the lines that mention your JS codefile by name
+  + Called stack trace since the mechanics of calling functions is in the call stack
+
+#### ES6 and Beyond
+- `let` and `const` are part of ES6
+  + No block scope before ES6
+  + These Keywords solve a lot of scoping problems *WATCHOUT*
+  + Solve problems relating to how JS translates code into something it can run
+- Arrow functions are also ES6
+  + Solve __lost execution content__ issue (a.k.a __content loss__) among others
+  + Other features added to make more expressive, secure, and easier to use
+  + Some JS environments may not be up to date
+    * Development tools (like Babel) allow you to write code w/ modern features and run it in less current environments
+
+#### Exercises
+- (9) `Math.max`
+  + `apply()` like Ruby splat (`*`)? (Blog: "Let's Splat it in JS")
