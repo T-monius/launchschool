@@ -1,2 +1,0 @@
-// objectClosureBanking.js
-
