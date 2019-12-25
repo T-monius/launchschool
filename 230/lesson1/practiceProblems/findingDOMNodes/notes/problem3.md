@@ -9,28 +9,6 @@
 
 ### Implementation
 ```js
-function getElementsByTagName(node, tagName) {
-  var nodesWithTagName = [];
-  function retrieveNodes(node) {
-    if (node.nodeName === tagName) {
-      nodesWithTagName.push(node);
-    }
-
-    var nodes = node.childNodes;
-    for (var i = 0; i < nodes.length; i += 1) {
-      retrieveNodes(nodes[i]);
-    }
-  }
-
-  return nodesWithTagName;
-}
-
-var pNodes = getElementsByTagName(document.body, "P");
-
-pNodes.forEach( function(pNode) {
-  pNode.classList.add('article-text');
-})
-
 function getElementsByTagName(tagName) {
   var elementsByTagName = [];
   function walk(node, callback) {
