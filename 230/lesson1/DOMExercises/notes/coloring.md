@@ -42,7 +42,7 @@ colorGeneration(0);
       - Set parent variable
       - Set count variable
       - While count is less than `n`, reassign the parent
-    * If the parent at `n` generations back is has `id` of `"1"`, style the element
+    * If the parent at `n` generations back has `id` of `"1"`, style the element
       - Access the node's `classList`
       - `add` class `generation-color`
 
