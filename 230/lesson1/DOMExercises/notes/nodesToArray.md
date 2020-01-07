@@ -93,20 +93,7 @@
 
 ### Code
 ```js
-function walk(node, callback) {
-  callback(node);
-  var i;
-
-  for (i = 0; i < node.children.length ; i += 1) {
-    walk(node[i], callback);
-  }
-}
-
-function nodesToArr(child) {
+function nodesToArr(child = document.body) {
   return [child.tagName, Array.from(child.children).map(nodesToArr)];
 }
-
-Array.from(document.body.children).map( function dunno(child) {
-  return [child.tagName, Array.from(child.children).map(dunno)];
-});
 ```
