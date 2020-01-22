@@ -10,7 +10,7 @@
 - Two Select elements
   + Each with nested options
 - Add and remove options
-  + Easier if we were to just removeelements
+  + Easier if we were to just remove elements
   + Adding requires storing removed tags or having a list of total options for each selection
 - `input` and `change` events associated with a `select` box
 
@@ -73,12 +73,19 @@
 - Define a method to tear-down a select box
   + Get the box
   + Iterate its children
-    * Revmove each child
+    * Remove each child
 - Set an empty array variable to store nodes for children of each select box
 - Clone the children of each select box
 - Set a listener for the form
   + Determine the particular select box of an event
+    * `target`
+      - Parent's id
     * Update the given select box to contain only the node of the `eventTarget`
+      - Get the select box by its `id`
+      - Filter the children against a value corresponding to the `eventTarget`
     * Clear the other box
     * Select the nodes that correspond to the list of options for the `eventTarget` node
+      - Use `value` of `target` node
+      - Access dictionary for the `otherSelectBox`
+      - Map nodes from the cloned children to the lists of values that correspond the the key
     * Append the appropriate nodes to the children of the other select box
