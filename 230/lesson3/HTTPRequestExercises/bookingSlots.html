@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Booking Slots</title>
+    <meta charset="utf-8" />
+    <style>
+      fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+
+      dl {
+        margin: 0;
+        padding: 0;
+      }
+
+      dt, dd {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .new-student-form {
+        background-color: #cccccc;
+      }
+
+      .new-student-form fieldset {
+        padding: 0 0 10px 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Schedules</h1>
+      <form action="/api/bookings" method="post">
+        <fieldset>
+          <dl>
+            <dt>Please select one schedule</dt>
+            <dd>
+              <select name="schedule"></select>
+            </dd>
+          </dl>
+          <label for="student_email">
+            Email&colon;
+            <input type="email" name="student_email">
+          </label>
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+  <script src="/javascripts/bookingSlots1.js"></script>
+</html>
