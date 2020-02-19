@@ -1,0 +1,56 @@
+html, body {
+  background: #60ccb4;
+  font: 16px Arial, sans-serif;
+  padding: 20px;
+}
+
+main {
+  background: #fff;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+form {
+  display: none;
+}
+
+h2, label {
+  color: #259776;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+button {
+  display: block;
+  font-size: 18px;
+  width: 90%;
+  background: crimson;
+  color: #fff;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+h1 {
+  display: block;
+  color: crimson;
+  font-size: 28px;
+  text-align: center;
+}
+
+li {
+  color: #259776;
+  border-bottom: grey;
+}
