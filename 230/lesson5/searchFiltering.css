@@ -1,0 +1,29 @@
+@import url('ls_reset.css');
+
+html, body {
+  font: 14px "Arial", sans-serif;
+  background: #ede593;
+  padding-top: 10px;
+}
+
+main {
+  width: 80%;
+  background: #fff;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+aside, section {
+  display: inline-block;
+}
+
+section li:hover {
+  background: #99f099;
+}
+
+@media screen and (min-width: 564px) {
+  aside {
+    position: relative;
+    bottom: 120px;
+  }
+}
