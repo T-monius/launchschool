@@ -1,0 +1,48 @@
+@import url('whitespace-reset.css');
+
+html, body {
+  font: 16px 'Ariel', sans-serif;
+  background: #323355;
+  color: #fff;
+}
+
+h1 {
+  font: bold 24px serif;
+  text-align: center;
+  margin: 25px;
+}
+
+.animal_gallery {
+  width: 100%;
+  text-align: center;
+}
+
+.animal_gallery li {
+  display: inline-block;
+  width: 20%;
+  margin: 2%;
+}
+
+.animal_gallery figure {
+  position: relative;
+  background: #fff;
+  top: 0;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+figure img {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+figcaption {
+  display: none;
+  position: absolute;
+  top: 50px;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 12px;
+  bottom: 10px;
+  z-index: 10;
+}
