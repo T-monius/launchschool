@@ -1,0 +1,113 @@
+@import url('whitespace-reset.css');
+
+html, body {
+ font: 16px 'Arial', sans-serif;
+ background-color: #226543;
+ padding: 20px;
+}
+
+h1 {
+  font: 32px serif;
+  color: white;
+}
+
+.todo_box ul {
+  padding: 20px;
+}
+
+.todo_box li {
+  overflow: auto;
+  background: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.todo_box p {
+  display: inline-block;
+}
+
+.todo_box a {
+  float: right;
+  font-size: 20px;
+  color: red;
+  text-decoration: none;
+}
+
+.todo_box a:hover {
+  font-size: 24px;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.60);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.overlay section {
+  overflow: auto;
+  width: 80%;
+  margin: 100px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.overlay div {
+  float: right;
+}
+
+.overlay a {
+  display: inline-block;
+  color: #fff;
+  font: 20px serif;
+  padding: 10px;
+  margin: 10px 5px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.overlay a:first-of-type {
+  background: #9F1332;
+}
+
+.overlay a:last-of-type {
+  background: #289F37;
+}
+
+.context_menu {
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+
+.context_menu ul {
+  background: #fff;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.context_menu li {
+  background: #ccc;
+  padding: 10px;
+  margin-bottom: 1px;
+}
+
+.context_menu li:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.context_menu li:last-of-type {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.context_menu li:hover {
+  background: #bbbbbb;
+  color: #fff;
+}
