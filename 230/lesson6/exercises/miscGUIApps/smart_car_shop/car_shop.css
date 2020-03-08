@@ -1,0 +1,53 @@
+@import url('whitespace-reset.css');
+
+header {
+  background: #E29921;
+  color: #fff;
+  padding: 15px;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+.form_selects dl, dt, dd {
+  display: inline-block;
+}
+
+header form button {
+  display: inline-block;
+  background: #E29921;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+header form button:hover {
+  display: inline-block;
+  background: #fff;
+  color: #E29921;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.car_gallery {
+  padding: 15px;
+}
+
+.car_gallery li {
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.car_gallery img {
+  width: 200px;
+}
+
+.car_gallery a {
+  display: inline-block;
+  background: #E29921;
+  color: #fff;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+}
