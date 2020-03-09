@@ -1,0 +1,63 @@
+@import url('whitespace-reset.css');
+
+html, body {
+  background: #225A6E;
+}
+
+.calculator {
+  background: #fff;
+  width: 350px;
+  padding: 2px;
+  margin: 50px auto 0;
+  border-radius: 5px;
+}
+
+.screen {
+  background: #fff;
+  height: 125px;
+  padding-bottom: 2px;
+}
+
+.upper {
+  position: relative;
+  height: 40px;
+}
+
+.upper p {
+  position: absolute;
+  font-size: 20px;
+  bottom: 0;
+  right: 5px;
+}
+
+.lower {
+  position: relative;
+  height: 80px;
+}
+
+.lower p {
+  position: absolute;
+  font-size: 46px;
+  bottom: 0;
+  right: 5px;
+}
+
+.calculator button {
+  display: inline-block;
+  background: #CCCCCC;
+  width: 22%;
+  font-size: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 2px 1%;
+  border-radius: 5px;
+}
+
+.calculator button:hover {
+  background: #fff;
+  border: 1px solid #CCC;
+}
+
+.inputs {
+  border-top: 1px solid #CCCCCC;
+}
