@@ -1,0 +1,45 @@
+@import url('whitespace-reset.css');
+
+html, body {
+  background: #5555FF;
+  font: 16px 'Arial', sans-serif;
+}
+
+h1 {
+  width: 300px;
+  color: #fff;
+  font-size: 32px;
+  margin: 10px auto;
+}
+
+main {
+  width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  background: #ccc;
+}
+
+header p {
+  display: inline-block;
+  font-size: 12px;
+  padding: 5px;
+  margin: 2px;
+}
+
+header p:hover {
+  background: #fff;
+}
+
+.selected {
+  background: #fff;
+}
+
+.text_box {
+  box-sizing: border-box;
+  background: #fff;
+  width: 100%;
+  height: 475px;
+  padding: 5px;
+}
