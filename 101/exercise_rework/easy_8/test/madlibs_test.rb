@@ -1,2 +1,0 @@
-# madlibs_test.rb
-

@@ -1,6 +1,0 @@
-...
-  def test_bad_wheels
-    car = Car.new
-    assert_equal(3, car.wheels)
-  end
-...

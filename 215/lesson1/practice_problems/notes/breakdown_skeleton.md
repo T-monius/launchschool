@@ -1,8 +1,0 @@
-### Understanding
-- 
-
-### Task
-- 
-
-### Implementation
-- 
